@@ -105,5 +105,32 @@ Lession 2: Spring Bean
 				private Person person;
 				
 				
+<<<<<<< HEAD
+=======
+=====================================	Fri 17-Jan-2020 =============================================
+	JPA:
+			JPA là viết tắt của Java Persistence API, nó là một đặc tả Java cho việc ánh xạ
+				giữa các đối tượng Java với CSDL quan hệ sử dụng công nghệ phố biến là 
+				ORM (Object Relational Mapping)
+			
+			Java Application -----> Object -------> ORM -------> Database
+			
+			JPA cung cấp đầy đủ các công cụ cho phép chúng ta có thể thao tác vói csdl một
+			cách đơn giản và nhanh chóng. JPA có thể dùng để persist một đối tượng Java (POJO - 
+			Plain Old Java Object) vào trong CSDL hoặc lấy dữ liệ từ CSDL và ánh xạ (mapping)
+			ra các dối tượn Java một các đơn giản
+			
+			JPA hoạt động như một cầu nối giữa các table / các mối quan hệ giữa các table trong database
+			và các class/ mối quan hệ giữa các object. Vd: table User với các column(id, username, password)
+			sẽ tương ứng với class User.java với các field Id, username, password. 
+			Từ đó mỗi khi truy vấn table hay các column ta sẽ gọi trực tiếp các phương thức trên các class, 
+			các field của class mà không cần quan tâm tới việc đang dùng loại database nào, 
+			kiểu dữ liệu database ra sao, …
+			
+			
+			
+		
+				
+>>>>>>> Lesson Day Fri, 17-Jan-2020 JavaSpringBoot first Project
 				
  		
