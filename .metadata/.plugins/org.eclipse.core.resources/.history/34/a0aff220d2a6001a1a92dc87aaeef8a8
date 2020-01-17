@@ -1,0 +1,9 @@
+package com.laptrinhjavaweb.controller.admin.api;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet(urlPatterns = {"/admin-home"})
+public class NewControllerr extends HttpServlet {
+
+}

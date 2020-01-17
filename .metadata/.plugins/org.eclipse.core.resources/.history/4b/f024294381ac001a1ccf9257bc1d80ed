@@ -1,0 +1,5 @@
+package com.levunguyen.dao;
+
+public class UserDao {
+
+}

@@ -1,0 +1,6 @@
+package com.levunguyen.controllers;
+
+@Controller
+public class UserController {
+
+}

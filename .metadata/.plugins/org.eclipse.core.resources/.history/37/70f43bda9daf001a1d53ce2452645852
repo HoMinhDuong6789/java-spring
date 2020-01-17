@@ -1,0 +1,11 @@
+package ex02;
+
+import java.time.LocalDate;
+
+public class Student {
+	private String id;
+	private String name;
+	private password;
+	private LocalDate dayOfBirth;
+	
+}

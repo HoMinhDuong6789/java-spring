@@ -1,0 +1,9 @@
+package j4t.controller.web;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet(urlPatterns = {"/trangchu"} )
+public class HomeController extends HttpServlet{
+	
+}

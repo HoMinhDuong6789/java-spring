@@ -1,0 +1,9 @@
+package com.laptrinhjavaweb.utils;
+
+public class HttpUtilr {
+	
+	
+	public static HttpUtilr of() {
+		// TODO Auto-generated constructor stub
+	}
+}

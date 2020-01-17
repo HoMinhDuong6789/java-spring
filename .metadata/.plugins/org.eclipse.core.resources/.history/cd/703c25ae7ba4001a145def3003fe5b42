@@ -1,0 +1,8 @@
+package j4t.model;
+
+public class NewModel {
+	private String title;
+	private String thumbnail;
+	
+	
+}

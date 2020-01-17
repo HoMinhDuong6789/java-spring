@@ -1,0 +1,42 @@
+package com.laptrinhjavaweb.controller.web;
+
+import com.laptrinhjavaweb.model.UserModel;
+import com.laptrinhjavaweb.service.ICategoryService;
+import com.laptrinhjavaweb.service.IUserService;
+import com.laptrinhjavaweb.utils.FormUtil;
+import com.laptrinhjavaweb.utils.SessionUtil;
+
+import javax.inject.Inject;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ResourceBundle;
+
+@WebServlet(urlPatterns = { "/trang-chu", "/dang-nhap", "/thoat" })
+public class HomeController extends HttpServlet {
+
+	
+	private static final long serialVersionUID = 2686801510274002166L;
+
+	ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		UserModel userModel = new UserModel();
+		userModel.setUserName("J4t");
+		req.setAttribute("model", userModel);
+		RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
+		rd.forward(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doPost(req, resp);
+	}
+}

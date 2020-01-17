@@ -1,0 +1,19 @@
+package com.levunguyen.controllers;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.levunguyen.dao.UserDao;
+
+@Controller
+public class UserController {
+	UserDao userDao = new UserDao();
+	
+	@GetMapping("/login")
+	public String getLoginPage() {
+		return "index";
+	}
+	
+	public String log(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password)
+}

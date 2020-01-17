@@ -1,0 +1,22 @@
+package com.laptrinhjavaweb.utils;
+
+import java.io.BufferedReader;
+
+public class HttpUtilr {
+	
+	public HttpUtilr() {
+		
+	}
+	
+	public static HttpUtilr of(BufferedReader reader) {
+		// TODO Auto-generated constructor stub
+		StringBuilder sb = new StringBuilder();
+		String line reader.readLine();
+		while(line!=null) {
+			sb.append(line);
+			line= reader.readLine();
+		}
+		
+		return new HttpUtilr();
+	}
+}

@@ -1,0 +1,5 @@
+package com.levunguyen.entity;
+
+public class User {
+
+}

@@ -1,0 +1,32 @@
+package ex01;
+
+import java.util.Scanner;
+
+public class Equation {
+	private Scanner sc = new Scanner(System.in);
+	//private long a = 0, b = 0;
+
+	public static void main(String[] args) {
+		long a = 0, b = 0;
+		Equation demo = new Equation();
+		demo.input(a, b);
+		System.out.println(a + " " + b);
+	}
+
+	// input
+	private long input() {
+		System.out.println("Enter paramater a, b of ax + b =0");
+		try {
+			System.out.println("Enter paramater a");
+			return Long.parseLong(sc.next());
+		} catch (NumberFormatException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return 0;
+
+	}
+
+	//
+
+}

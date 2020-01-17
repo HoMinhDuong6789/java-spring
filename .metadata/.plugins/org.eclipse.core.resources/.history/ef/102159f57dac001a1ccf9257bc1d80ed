@@ -1,0 +1,15 @@
+package com.levunguyen.controllers;
+
+import org.springframework.stereotype.Controller;
+
+import com.levunguyen.dao.UserDao;
+
+@Controller
+public class UserController {
+	UserDao userDao = new UserDao();
+	
+	@GetMapping
+	public String getLoginPage() {
+		
+	}
+}

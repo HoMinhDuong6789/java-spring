@@ -1,0 +1,5 @@
+package j4t.controller.web;
+
+public class HomeController {
+
+}

@@ -1,0 +1,15 @@
+package j4t.model;
+
+public class UserModel {
+	
+	private Long id;
+	private String userName;
+	private String fullName;
+	private String passWord;
+	private int status;
+	private Long roleId;
+	
+	
+	
+
+}

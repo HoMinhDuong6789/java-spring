@@ -1,0 +1,36 @@
+package ex02;
+
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+public class StudentUtils {
+	private Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		StudentUtils demo = new StudentUtils();
+		System.out.println(demo.inputIdStudent());
+	}
+
+	private String inputIdStudent() {
+		String id = "";
+		String ID_PATTERN = "^[bkit].*[0-9]{3}";
+		boolean check = false;
+		do {
+			System.out.println("Enter your id, example: bkit001");
+			id = sc.nextLine();
+			System.out.println("the id which you've entered " + id + " " + Pattern.matches(ID_PATTERN, id));
+			check = Pattern.matches(ID_PATTERN, id);
+		} while (!check);
+		return id;
+	}
+
+	private String inputNameStudent() {
+		String name = "";
+		//Tiếng việt có dấu, it nhất 6 kí tự, không được chứa kí tự số, kí tự đặc biệt.
+		name = sc.nextLine()
+		String ID_PATTERN = "^[àáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ]{6}\\d+";
+		System.out.println("the name which you've entered " + name + " " + Pattern.matches(ID_PATTERN, id));
+		check = Pattern.matches(ID_PATTERN, id);
+		return name;
+	}
+}

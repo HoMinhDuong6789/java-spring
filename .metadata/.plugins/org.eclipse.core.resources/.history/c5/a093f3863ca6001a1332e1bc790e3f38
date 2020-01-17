@@ -1,0 +1,17 @@
+package com.laptrinhjavaweb.utils;
+
+import java.io.BufferedReader;
+
+public class HttpUtilr {
+	
+	public HttpUtilr() {
+		
+	}
+	
+	public static HttpUtilr of(BufferedReader reader) {
+		// TODO Auto-generated constructor stub
+		
+		
+		return new HttpUtilr();
+	}
+}

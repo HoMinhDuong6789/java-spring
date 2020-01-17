@@ -1,0 +1,24 @@
+package com.laptrinhjavaweb.utils;
+
+
+
+import javax.servlet.http.HttpServletRequest;
+
+public class SessionUtilr {
+
+	private static SessionUtilr sessionUtilr = null;
+
+	public void putValue() {
+		if(sessionUtilr==null) {
+			sessionUtilr = new SessionUtilr();
+		}
+	}
+
+	public Object getValue() {
+		return null;
+	}
+
+	public void removeValue() {
+
+	}
+}

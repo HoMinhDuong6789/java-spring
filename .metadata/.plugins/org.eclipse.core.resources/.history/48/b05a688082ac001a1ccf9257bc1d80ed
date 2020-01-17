@@ -1,0 +1,9 @@
+package com.levunguyen.dao;
+
+import com.levunguyen.entity.User;
+
+public class UserDao {
+	public User checklogin(String username,String password) {
+		if(username.equalsIgnoreCase("admin")&& password.equalsIgnoreCase("123456"))
+	}
+}
