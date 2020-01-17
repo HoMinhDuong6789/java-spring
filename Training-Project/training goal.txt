@@ -1,0 +1,9 @@
+1. Java core					x
+2. Spring Boot					procesing
+3. Spring MVC
+4. Spring Security					.
+5. Hibernate
+6. MySQL						x
+7. HTML/CSS/JS
+8. Thymeleaf						.
+9. Git							x

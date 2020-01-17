@@ -1,0 +1,4 @@
+database host: 2nfl.mysql.database.azure.com
+database name: training
+database username: azure_2nfl@2nfl
+database password: 1001dogS

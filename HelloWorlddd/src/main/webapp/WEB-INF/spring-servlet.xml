@@ -25,7 +25,13 @@
 		init-method="init" destroy-method="destroy" scope="singleton">
 		<constructor-arg name="name" value="Trung Tam Java"></constructor-arg>
 		<constructor-arg name="age" value="13"></constructor-arg>
-		</bean>
+	</bean>
+
+	<bean id="order" class="com.trungtamjava.model.Order" autowire="byName">
+		<!-- init-method="init" destroy-method="destroy" scope="singleton"> -->
+		<property name="person" ref="person"></property>
+		<!-- <constructor-arg name="person" ref="person"></constructor-arg> -->
+	</bean>
 
 
 </beans>

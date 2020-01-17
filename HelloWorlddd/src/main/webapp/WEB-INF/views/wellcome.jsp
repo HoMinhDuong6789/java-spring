@@ -7,6 +7,6 @@
 <title>Bravo</title>
 </head>
 <body>
-	Bravo: ${msg}
+	<p>Bravo: ${person.name}</p>
 </body>
 </html>

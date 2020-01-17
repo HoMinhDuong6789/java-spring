@@ -1,0 +1,10 @@
+<form th:action="@{/login}" method="post">
+	<div class="align-center">
+		<p class="err" th:if="${errMessage}">Wrong user or password</p>
+		<label for="username">username&#58;</label> <input type="text"
+			name="username" value="" required autofocus> <label
+			for="password">password&#58;</label> <input type="password"
+			name="password" value="" required> <input type="submit"
+			value="login">
+	</div>
+</form>

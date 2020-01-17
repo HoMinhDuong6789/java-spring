@@ -15,14 +15,16 @@ mvn clean install
 
 Lession 1 Đặc Điểm
 
-	Ioc Containner: dừng để khởi tạo đối tượng từ class, cấu hình, quản lí, và điều phối các đối tượng (bean)
-					trong chương trình.
+	Ioc Containner: dừng để khởi tạo đối tượng từ class, cấu hình, quản lí, 
+	và điều phối các đối tượng (bean) trong chương trình.
 	
-	Bean: là các đối tượng được khởi tạo từ class. Tồn tại trong khung làm việc của request, sesion, app context,... có 2 loại hay dùng:
+	Bean: là các đối tượng được khởi tạo từ class. Tồn tại trong khung làm việc của request,
+	sesion, app context,... có 2 loại hay dùng:
 		Singleton: 1 đối tượng duy nhất trong IoC. Mặc định hay dùng
 		Prototype: 1 đối tượng mới được tạo khi sử dụng bean, ít dùng
 	
-	Dependency Injection (DI) gasn bean vào biến khi được sử dụng trong chương trình. Autowire hoặc Inject thông qua
+	Dependency Injection (DI) gasn bean vào biến khi được sử dụng trong chương trình.
+	Autowire hoặc Inject thông qua
 		Constructor: Gán giá trị cho biến thông qua constructor
 		Setter: Gán giá trị cho biến thông qua hàm setter
 	
@@ -31,13 +33,15 @@ Lession 1 Đặc Điểm
 	
 Lession 2: Spring Bean 
 	
-	Bean: là các đối tượng được khởi tạo từ class. Tồn tại trong khung làm việc của request, sesion, app context,... Có các loại:
+	Bean: là các đối tượng được khởi tạo từ class. Tồn tại trong khung làm việc của request,
+	sesion, app context,... Có các loại:
 		Singleton: 1 đối tượng duy nhất trong IoC. Mặc định, 		hay dùng
 		Prototype: 1 dối tượng mới được tạo khi sử dụng bean. 		ít dung
 		Request: tồn tại trong một HTTP request
 		Sesion và Global Sesion: tồn tại trong một HTTP Sesion
 	
-	Dependency Injection (DI) gán bean vào biến khi được sử dụng trong chương trình. Có hai cách gán bean
+	Dependency Injection (DI) gán bean vào biến khi được sử dụng trong chương trình. 
+	Có hai cách gán bean
 		Autowire:		cách hay được sử dụng, và Spring sẽ giúp chúng ta tìm các bean tương ứng với kiểu biến chúng ta sử dụng
 			trong chương trình  và gán tự động cho chúng ta
 		
@@ -53,14 +57,53 @@ Lession 2: Spring Bean
 		
 	Tạo Bean 
 		bản chất là tạo các đới tượng từ class
-		XML Config: khỏi tjao thông qua beans namesoace, dùng constructor hoặc thuộc tính với hàm set/get
+		XML Config: khỏi tjao thông qua beans namesoace, 
+			dùng constructor hoặc thuộc tính với hàm set/get
 		Java Config: khởi tạo một dối tượng thông qua từ khóa new và @Bean
 		
 	Dependency Injection   (gán bean vào biến)
-		Dependency Injection (DI) gán bean vào biến khi được sử dụng trong chương trình. Có hai cách	
+		Dependency Injection (DI) gán bean vào biến khi được sử dụng trong chương trình. 
+		Có hai cách	
 			Autowire: tự động tìm bwan và gán khi dùng
 			Inject thông qua gán bean trực tiếm cho biến
+				
+				XML Config: sử dụng constructor hoặc hàm set
+				Java Config: tạo đối tượng dùng constructor/set
+					
+					<bean id="person" class="com.trungtamjava.model.Person"
+						init-method="init" destroy-method="destroy" scope="singleton">
+						<property name="name" value="Trung Tam Java"></property>
+						<property name="age" value="13"></property>
+					</bean>
+
+					<bean id="order" class="com.trungtamjava.model.Order"
+						init-method="init" destroy-method="destroy" scope="singleton">
+						<property name="person" value="Spring"></property>
+					</bean>
+				
+				@Bean
+				public Oeder(){
+					return new Order(person);
+				}
 	
-	10:10
-	
-		
+			Autowire: tự động tìm các bean để gán cho biến khi sử dụng thông qua:
+				byName: tự động tìm theo tên biến
+				byType: tự động tìm theo loại dữ liệu của biến
+				constructor: tự động tìm theo đối số constructor
+				autodetect: tự động tìm theo constructor và loại biến. 			hay dùng
+			
+			
+			XML Config
+				<bean id="order" class="com.trungtamjava.Order" autowire="byName">
+					<property name="name" value="Trung Tam Java"></property>
+						<property name="age" value="13"></property>
+				</bean>
+			
+			Java Config:
+				@Autowired
+				@Qualofoer("person") //để Spring biết biến đó là gì
+				private Person person;
+				
+				
+				
+ 		
