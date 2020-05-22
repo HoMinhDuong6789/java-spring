@@ -2,6 +2,7 @@ package j4t;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,6 +32,15 @@ public class HelloServlet extends HttpServlet{
 		PrintWriter writer = resp.getWriter();
 		writer.println("<h1>Hello - Xin Chao</h1>");
 		writer.close();
+		System.out.println("phuong thuc cua request\t"+req.getMethod());
+		System.out.println("ontent type\t"+req.getContentType());
+		System.out.println("cookie\t"+req.getCookies());
+		System.out.println("Server name\t"+req.getServerName());
+		Enumeration<String> keys = req.getHeaderNames();
+		while (keys.hasMoreElements()) {
+			String key = (String) keys.nextElement();
+			System.out.println(key+"\t"+req.getHeader(key));
+		}
 	}
 	
 	@Override
