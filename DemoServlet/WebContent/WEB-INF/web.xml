@@ -10,7 +10,7 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-  <servlet>
+  <!-- <servlet>
   	<servlet-name>hello</servlet-name>
   	<servlet-class>j4t.HelloServlet</servlet-class>
   	<load-on-startup>1</load-on-startup>
@@ -19,5 +19,5 @@
   <servlet-mapping>
   	<servlet-name>hello</servlet-name>
   	<url-pattern>/xinchao</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
 </web-app>
