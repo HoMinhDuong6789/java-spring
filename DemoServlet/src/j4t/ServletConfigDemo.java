@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/test-config"}, initParams = {@WebInitParam(name = "name", value = "j4t")})
+/*@WebServlet(urlPatterns = {"/test-config"}, initParams = {@WebInitParam(name = "name", value = "j4t")})*/
 public class ServletConfigDemo extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -18,5 +18,6 @@ public class ServletConfigDemo extends HttpServlet{
 		resp.setContentType("text/html");
 		PrintWriter printWriter = resp.getWriter();
 		printWriter.println("Wellcome\t"+name);
+		printWriter.print(getServletName());
 	}
 }	
