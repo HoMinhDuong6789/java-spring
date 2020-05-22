@@ -18,6 +18,7 @@ public class GetRequestDemo extends HttpServlet{
 		PrintWriter printWriter = resp.getWriter();
 		printWriter.print("test");
 		String name= req.getParameter("name");
-		printWriter.println("wellcome\t"+name);
+		String tutorial= req.getParameter("tutorial");
+		printWriter.println("wellcome:\t"+name+"\ttutorial:\t"+tutorial);
 	}
 }
