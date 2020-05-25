@@ -1,1 +1,10 @@
 bai 14: cách deploy một Java Servlet bằng một file war
+	
+
+bai 17: RequestDispatcher trong java Servlet
+	RequestDispatcher : dùng để phân phối các request tới các nguồn tài nguyên khác trong servlet
+	có hai phương thức chính là forward() và include()
+
+	forward(): tức là requestdispatcher sẽ  forward request từ servlet 1 đến một servlet 2 or một file html nào đó. Sau đó từ servlet 2 sẽ trả về một response cho client 
+
+	include: client gửi một sequest lên servlet1 sau đó servlet 1 sẽ include nội dung của servlet2 vào đây và sau đó trả về một response bao gồm nội dung của servlet1 và 2 và trả về client
