@@ -17,7 +17,7 @@ public class FormPerson extends HttpServlet{
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			resp.setContentType("text/html");
 			PrintWriter printWriter = resp.getWriter();
-			printWriter.println("<form action='/DemoServlet/add-user' method='get'>\n" + 
+			printWriter.println("<form action='/HelloServlet/add-user' method='get'>\n" + 
 			"  <label for='txtname'>Name:</label>" + 
 			"  <input type='text' id='txtname' name='name'><br>\n" + 
 			"  <label for='txtage'>Age:</label>" + 
