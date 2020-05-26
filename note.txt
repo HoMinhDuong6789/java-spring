@@ -16,4 +16,32 @@ bafi 18: Cookie là gì
 	Request sẽ gửi thông tin Cookies trong header mỗi lần gọi 
 	Java Servlet hỗ trợ HTTP cookie
 	Có một thời gian sống nhất định
+
+bafi 19: Session
+	Giao thucs http
+	
+	Session la gi?
+	Session giusp duy tri trang thia cua su lieu cua nguoi dung
+	Session cos mot thoi gian song xac dinh
+	Servlet quan li bang Session Management
+	Session luu thong tin dang key/Value tren Server
+
+	Cach hoat dong
+		cookie: set ID vao cookie de nhan dang
+	Hidden Field trong form
+		Set id vao mot truong an trong form 
+		<input type="hidden" name="sessionid" value="1234">
+	Url Rewriting
+		http://tutorialspoint.com/file/html;sessionid=12345
+	
+	HttpSession: la mot interface trong Servlet giup luu cac thong tin nguowi dung qua cac servlet khac nhau
+		HttpSession session = request.getSession();
+
+	Session dduowj luu ow server, ow phia client se gui leen mot request co dinh kem voi sessionId, va nhung servlet khac co the doc duoc
+session, va lay chinh xac duoc cac session cua client dang gui len.
+
+ 
+
+
+	
 	
