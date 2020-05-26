@@ -8,3 +8,12 @@ bai 17: RequestDispatcher trong java Servlet
 	forward(): tức là requestdispatcher sẽ  forward request từ servlet 1 đến một servlet 2 or một file html nào đó. Sau đó từ servlet 2 sẽ trả về một response cho client 
 
 	include: client gửi một sequest lên servlet1 sau đó servlet 1 sẽ include nội dung của servlet2 vào đây và sau đó trả về một response bao gồm nội dung của servlet1 và 2 và trả về client
+
+
+bafi 18: Cookie là gì
+	Cookie là một file text lưu ở phía browsers của client
+	Cookie lưu thông tin dạng key/value
+	Request sẽ gửi thông tin Cookies trong header mỗi lần gọi 
+	Java Servlet hỗ trợ HTTP cookie
+	Có một thời gian sống nhất định
+	
