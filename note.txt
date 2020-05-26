@@ -40,6 +40,15 @@ bafi 19: Session
 	Session dduowj luu ow server, ow phia client se gui leen mot request co dinh kem voi sessionId, va nhung servlet khac co the doc duoc
 session, va lay chinh xac duoc cac session cua client dang gui len.
 
+bai 23: Java Servlet Filter
+	Filter là một odoois tượng dùng để xử lí request trước khi gọi đén một servlet đich, và một response trarveff kết quả từ sẻvlet
+	Dùng nhiều filter một lúc
+
+	Dễ dàng tích hợp bất cứ lúc nào
+	
+	Tác dụng của filter: loggin, check ip, nén file, validate dữ liệu,...
+
+
  
 
 
