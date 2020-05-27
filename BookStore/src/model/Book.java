@@ -5,7 +5,7 @@ public class Book {
 	private String title;
 	private String author;
 	private float prices;
-	
+
 	public Book() {
 		super();
 	}
@@ -13,6 +13,13 @@ public class Book {
 	public Book(int id) {
 		super();
 		this.id = id;
+	}
+
+	public Book(String title, String author, float prices) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.prices = prices;
 	}
 
 	public Book(int id, String title, String author, float prices) {
@@ -54,8 +61,10 @@ public class Book {
 	public void setPrices(float prices) {
 		this.prices = prices;
 	}
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", prices=" + prices + "]";
+	}
+
 }
