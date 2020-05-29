@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>home page</title>
 </head>
 <body>
-
+	${message}
+	</br>
+	wellcome to <span style="color: blue">${account.email}</span>
 </body>
 </html>
