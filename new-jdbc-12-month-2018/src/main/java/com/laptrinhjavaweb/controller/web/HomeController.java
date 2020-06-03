@@ -30,6 +30,11 @@ public class HomeController extends HttpServlet {
 	ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String code = "giai tri";
+		request.setAttribute("categories", categoryService.findAll());
+		RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
+		rd.forward(request, response);
+		/*
 		String action = request.getParameter("action");
 		if (action != null && action.equals("login")) {
 			String alert = request.getParameter("alert");
@@ -48,6 +53,7 @@ public class HomeController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
 			rd.forward(request, response);
 		}
+		*/
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

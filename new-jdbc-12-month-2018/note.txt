@@ -1,0 +1,20 @@
+JDBC
+
+
+	Bài: tìm hiểu PreparedStatement, REsultSets trong jaba web jsp servlet
+	ResultSets: nó giống như table để chứa dữ liệu sau khi thực hiện câu truy vấn
+	
+	java servlet weld (Dependency Injection)
+		+ download thư viện weld jar trong maven project
+		+ tao bean
+		+ tạo một listenner trong xml
+	 
+	 Bài: hướng đẫn lấy dữ liệu từ database trong java web servlet
+	 Dependency Injection: nó giúp chúng ta khởi tạo đổi tượng mới mà ko cần phải
+new đối tượng đó, giúp tiết kiệm bộ nhớ.
+	làm giảm sự phụ thuộc của các tầng, tàng dưới có thay đổi gì thì tầng trên k obij ảnh hưởng nhiều
+	
+	
+	Debug
+		 F6: chạy từng bước
+		 F8: nhảy sang Next point tiếp theo
