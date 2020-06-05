@@ -16,40 +16,7 @@ public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategory
 	@Override
 	public List<CategoryModel> findAll() {
 		String sql = "SELECT * FROM category";
-		// recode
-		List<CategoryModel> results = new ArrayList<>();
-		Connection connection = getConnection();
-		PreparedStatement statement = null;
-		ResultSet resultSet = null;
-		try {
-			statement = connection.prepareStatement(sql);
-			resultSet = statement.executeQuery();
-			while (resultSet.next()) {
-				CategoryModel category = new CategoryModel();
-				category.setId(resultSet.getLong("id"));
-				category.setCode(resultSet.getString("code"));
-				category.setName(resultSet.getString("name"));
-				results.add(category);
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-
-			try {
-				connection.close();
-				statement.close();
-				resultSet.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			return results;
-		}
-
-		//return query(sql, new CategoryMapper());
+		return query(sql, new CategoryMapper());
 	}
 
 	@Override

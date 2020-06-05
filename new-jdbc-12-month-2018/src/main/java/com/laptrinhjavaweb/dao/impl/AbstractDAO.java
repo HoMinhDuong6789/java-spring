@@ -17,12 +17,7 @@ import com.laptrinhjavaweb.mapper.RowMapper;
 public class AbstractDAO<T> implements GenericDAO<T> {
 
 	ResourceBundle resourceBundle = ResourceBundle.getBundle("db");
-	
-	public static void main(String[] args) {
-		AbstractDAO<CategoryDAO> demo  = new AbstractDAO<>();
-		System.out.println(demo.getConnection());
-		
-	}
+
 	public Connection getConnection() {
 		try {
 			Class.forName(resourceBundle.getString("driverName"));
