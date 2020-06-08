@@ -153,8 +153,6 @@
 			<version>2.10.0</version>
 		</dependency>
 
-
-
 		<!-- https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet -->
 		<dependency>
 			<groupId>org.jboss.weld.servlet</groupId>
