@@ -1,7 +1,5 @@
 package com.laptrinhjavaweb.paging;
 
-import com.laptrinhjavaweb.sort.Sorter;
-
 public class PageRequest implements Pageble {
 	
 	private Integer page;
