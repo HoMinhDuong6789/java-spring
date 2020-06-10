@@ -13,11 +13,23 @@ import java.util.ResourceBundle;
 
 import com.laptrinhjavaweb.dao.GenericDAO;
 import com.laptrinhjavaweb.mapper.RowMapper;
+import com.laptrinhjavaweb.model.NewModel;
+import com.laptrinhjavaweb.service.INewService;
+import com.laptrinhjavaweb.service.impl.NewService;
 
 public class AbstractDAO<T> implements GenericDAO<T> {
 
-	ResourceBundle resourceBundle = ResourceBundle.getBundle("db");
+	//ResourceBundle resourceBundle = ResourceBundle.getBundle("db");
 
+	public static void main(String[] args) {
+		AbstractDAO<NewModel> demo = new AbstractDAO();
+		System.out.println(demo.getConnection());
+		NewService demoo= new NewService();
+		NewDAO dao = new NewDAO();
+		System.out.println(demoo.findAll());
+	}
+	
+	
 	public Connection getConnection() {
 		try {
 			/*
