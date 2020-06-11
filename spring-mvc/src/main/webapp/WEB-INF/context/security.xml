@@ -10,18 +10,29 @@
 
 	<http auto-config="false" use-expressions="true"
 		disable-url-rewriting="true">
-		<access-denied-handler error-page=".access-denied"/>
-		<form-login login-page="/login"
-		username-parameter="j_username"
-		password-parameter="j_password"
-		login-processing-url="/j_spring_security_check"
-		authentication-failure-handler-ref="customSuccessHandeler"
-		authentication-failure-url="/login?incorrectAccount"/>
-		<session-management invalid-session-url="/login"/>
-		<logout delete-cookies="JSESSIONID"/>
-
+		<access-denied-handler
+			error-page=".access-denied" />
+		<form-login login-page="/dang-nhap"
+			username-parameter="j_username" password-parameter="j_password"
+			login-processing-url="/j_spring_security_check"
+			authentication-failure-handler-ref="customSuccessHandeler"
+			authentication-failure-url="/dang-nhap?incorrectAccount" />
+		<session-management invalid-session-url="/login" />
+		<logout delete-cookies="JSESSIONID" />
 	</http>
 
+	<!--this code for encryype MD5 -->
+	<authentication-manager>
+		<authentication-provider
+			user-service-ref="customUserDetailsService">
+			<password-encoder ref="bcryptEncoder" />
+		</authentication-provider>
+	</authentication-manager>
 
-
+	<beans:bean id="bcryptEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPsddwordEncoder" />
+	<beans:bean id="customUserDetailsService"
+		class="com.laptrinhjavaweb.service.impl.CustomUserDetailsService" />
+	<beans:bean id="customSuccessHandler"
+		class="com.laptrinhjavaweb.security.CustomSuccessHandler" />
 </beans:beans>
