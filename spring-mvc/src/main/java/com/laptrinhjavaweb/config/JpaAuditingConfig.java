@@ -22,9 +22,11 @@ public class JpaAuditingConfig {
 		public String getCurrentAuditor() {
 			// TODO Auto-generated method stub
 			Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+			if(authentication==null) { //la ko co dun lieu, or chuwa dang nhap
+				return null;
+			}
 			
-			
-			return null;
+			return authentication.getName();
 		}
 		
 		
