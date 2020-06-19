@@ -9,7 +9,7 @@ public class HelloWorldFactory {
 		case "en":
 			service = new HelloWorldServiceEnglishImpl();
 			break;
-		case "es":
+		case "sp":
 			service = new HelloWorldServiceSpanishImpl();
 			break;
 		case "fr":
