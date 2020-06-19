@@ -7,8 +7,6 @@ import org.springframework.context.annotation.Profile;
 
 import guru.springframework.services.HelloWorldFactory;
 import guru.springframework.services.HelloWorldService;
-import guru.springframework.services.HelloWorldServiceEnglishImpl;
-import guru.springframework.services.HelloWorldServiceFranceImpl;
 
 @Configuration
 public class HelloConfig {
