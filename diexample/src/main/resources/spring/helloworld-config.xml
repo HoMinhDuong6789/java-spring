@@ -31,11 +31,12 @@
 	</bean>
 
 	<beans profile="english">
-		<bean id="helloWorldServiceDefault"
+		<!-- <bean id="helloWorldServiceDefault"
 			factory-bean="helloWorldFactory"
 			factory-method="createHelloWorldService" primary="true">
 			<constructor-arg value="en" />
-		</bean>
+		</bean> -->
+		<import resource="classpath:spring/ennglish-hello-world"/>
 	</beans>
 
 	<beans profile="spanish">
