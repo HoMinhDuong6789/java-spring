@@ -1,9 +1,13 @@
 package guru.springframework.services;
 
+
+/**
+ * Created by jt on 10/26/15.
+ */
 public class HelloWorldServiceSpanishImpl implements HelloWorldService {
-	@Override
-	public String getGreeting() {
-		// TODO Auto-generated method stub
-		return "Say Hello!!!!!!!@@@@From Spanish with love@@@@@@@@##########$$$$$$$$$$$$$$$$$";
-	}
+
+    @Override
+    public String getGreeting() {
+        return "Hola mundo!!";
+    }
 }
