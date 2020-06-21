@@ -33,4 +33,11 @@
 		<property name="suffix" value=".jsp" />
 
 	</bean>
+
+	<bean id="person" class="com.trungtamjava.model.Person" init-method="init" destroy-method="destroy" scope="singleton">
+		<constructor-arg name="name" value="Trung Tam Java"/>
+		<constructor-arg name="age" value="3"/>
+	</bean>
+
+
 </beans>
