@@ -14,6 +14,16 @@
 <body>
 	<p>User Information</p>
 	<p>Name: ${user.name}</p>
-	<p>Age: ${user.age}</p>
+	<p>Password: ${user.password}</p>
+	<p>Id: ${user.id}</p>
+
+	<p>Gender: ${user.gender}</p>
+	<p>About: ${user.about}</p>
+	<p>AcceptAgreement: ${user.acceptAgreement}</p>
+	<p>Favorites:</p>
+
+	<%-- <c:forEach items="${user.favorites }" var="item">
+		<p>${item}</p>
+	</c:forEach> --%>
 </body>
 </html>

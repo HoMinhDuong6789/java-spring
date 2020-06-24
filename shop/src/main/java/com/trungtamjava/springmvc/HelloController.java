@@ -1,5 +1,8 @@
 package com.trungtamjava.springmvc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -62,6 +65,14 @@ public class HelloController {
 	public String addUser(HttpServletRequest request) {
 		User user = new User("j4Team");
 		request.setAttribute("user", user);
+		List<String> favorites = new ArrayList<>();
+		favorites.add("Movie");
+		favorites.add("Read");
+		favorites.add("Sport");
+		favorites.add("Code");
+		favorites.add("Travel");
+		user.setFavorites(favorites);
+		request.setAttribute("list", favorites);
 		return "addUser";
 	}
 

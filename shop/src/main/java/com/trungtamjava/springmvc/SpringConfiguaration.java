@@ -52,12 +52,12 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter{
 		return order;
 	}
 	
-	@Bean
-	@Autowired
-	public User user() {
-		User user = new User("j4Team");
-		return user;
-	}
+	/*
+	 * @Bean
+	 * 
+	 * @Autowired public User user() { User user = new User("j4Team"); return user;
+	 * }
+	 */
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
