@@ -1,14 +1,21 @@
 package com.trungtamjava.springmvc;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import com.trungtamjava.model.Order;
+import com.trungtamjava.model.Person;
+import com.trungtamjava.model.User;
 
 @Configuration
 @EnableWebMvc
@@ -19,15 +26,42 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter{
 	public ViewResolver viewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setViewClass(JstlView.class);
-		viewResolver.setPrefix("/WEB-INF/views");
+		viewResolver.setPrefix("/WEB-INF/views/");
 		viewResolver.setSuffix(".jsp");
 		return viewResolver;
 	}
 	
+	@Bean(name = "person", initMethod = "init", destroyMethod = "destroy")
+	@Scope(value = "prototype")
+	public Person person() {
+		Person person = new Person("J4Team", 4);
+		return person;
+	}
+	
+	@Bean(name = "person2", initMethod = "init", destroyMethod = "destroy")
+	public Person person2() {
+		Person person = new Person("J4Team", 4);
+		return person;
+	}
+	
+	@Bean
+	@Autowired
+	@Qualifier("person2") //neu co hai bean cung kieu du lieu, thi bat buoc phai co ten khac nhau de bean biet duoc
+	public Order order(Person person) {
+		Order order = new Order(person);
+		return order;
+	}
+	
+	@Bean
+	@Autowired
+	public User user() {
+		User user = new User("j4Team");
+		return user;
+	}
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/static/**").addResourceLocations("/resouces");
+		registry.addResourceHandler("/static/**").addResourceLocations("/resouces/");
 		
 	}
 }

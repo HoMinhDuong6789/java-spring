@@ -7,17 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href='<c:url value="/static/css/style.css"></c:url>'>
-
-<script type="text/javascript" src='<c:url value="/static/js/script.js"></c:url>'></script>
+<link href='<c:url value="/static/css.style.css"></c:url>'>
+<script type="text/javascript"
+	src='<c:url value="/static/css.style.css"></c:url>'></script>
 </head>
 <body>
-	<p>Hello ${person.name}</p>
 	<p>form User</p>
-	<%-- 	<form:form modelAttribute="user" method="post" action="#">
+	<c:url value="/adduser" var="url" />
+	<form:form modelAttribute="user" method="post" action="${url}">
 		<form:input path="name" />
-		<button type="submit"></button>
-	</form:form>--%>
-	<img alt="avatar" src='<c:url value='/static/image/link.jpg'></c:url>'>
+		<button type="submit">Submit</button>
+	</form:form>
 </body>
 </html>
