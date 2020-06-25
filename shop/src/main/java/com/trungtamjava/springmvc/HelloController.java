@@ -6,11 +6,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -42,7 +44,7 @@ public class HelloController {
 	public ModelAndView sayHello(HttpServletRequest request, HttpServletResponse response, HttpSession session,
 			@RequestParam(name = "user", required = true) String username,
 			@RequestHeader(name = "Accept", required = false) String contentType) {
-		Person person= new Person(username, 2);
+		Person person = new Person(username, 2);
 		request.setAttribute("person", person);
 		return new ModelAndView("hello");
 	}
@@ -61,7 +63,7 @@ public class HelloController {
 	 * form addUser
 	 * 
 	 */
-	@RequestMapping(value="/adduser", method = RequestMethod.GET)
+	@RequestMapping(value = "/adduser", method = RequestMethod.GET)
 	public String addUser(HttpServletRequest request) {
 		User user = new User("j4Team");
 		request.setAttribute("user", user);
@@ -72,12 +74,25 @@ public class HelloController {
 		favorites.add("Code");
 		favorites.add("Travel");
 		user.setFavorites(favorites);
+		request.setAttribute("user", user);
 		request.setAttribute("list", favorites);
 		return "addUser";
 	}
 
-	@RequestMapping(value ="/adduser", method = RequestMethod.POST)
-	public String addUser(HttpServletRequest request, @ModelAttribute("user") User user) {
+	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
+	public String addUser(HttpServletRequest request, @ModelAttribute("user") @Valid User user,
+			BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {//bien dung de kiem tra co loi hay ko, ==true thi co loi 
+			List<String> favorites = new ArrayList<>();
+			favorites.add("Movie");
+			favorites.add("Read");
+			favorites.add("Sport");
+			favorites.add("Code");
+			favorites.add("Travel");
+			//user.setFavorites(favorites);
+			request.setAttribute("list", favorites);
+			return "addUser";
+		}
 		// user = new User("j4Team");
 		request.setAttribute("user", user);
 		return "viewUser";

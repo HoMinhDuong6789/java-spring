@@ -18,8 +18,10 @@
 		<form:hidden path="id" />
 		<p>Name</p>
 		<form:input path="name" />
+		<p style="color: red;"><form:errors path="name"></form:errors></p>
 		<p>Password</p>
 		<form:password path="password" />
+		<p style="color: red;"><form:errors path="password"></form:errors></p>
 		<p>Favorites</p>
 		<form:checkboxes path="favorites" items="${list}"/>
 		<%-- <form:checkbox path="favorites" value="Listen to Music" label="Music" />
