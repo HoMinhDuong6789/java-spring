@@ -43,7 +43,7 @@
 			<version>${jstl.version}</version>
 		</dependency>
 
-		<!-- Form Validation using Annotations -->
+		<!-- Form Validation using Annotations 
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
@@ -53,7 +53,7 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>6.0.17.Final</version>
-		</dependency>
+		</dependency> -->
 
 	</dependencies>
 

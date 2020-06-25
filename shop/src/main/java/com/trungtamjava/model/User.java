@@ -2,17 +2,9 @@ package com.trungtamjava.model;
 
 import java.util.List;
 
-import javax.validation.constraints.Min;
-
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
-
 public class User {
-	@NotEmpty
 	private String name;
-	@Length(min = 6, max=12)
 	private String password;
-	@Min(0)
 	private int id;
 	
 	private List<String> favorites;

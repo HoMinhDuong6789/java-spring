@@ -6,11 +6,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,9 +21,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.trungtamjava.model.Person;
 import com.trungtamjava.model.User;
+import com.trungtamjava.validator.UserValidator;
 
 @Controller
 public class HelloController {
+	
+	@Autowired
+	private UserValidator userVAlidator;
 
 	@Autowired
 	@Qualifier("person2")
@@ -80,8 +82,9 @@ public class HelloController {
 	}
 
 	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
-	public String addUser(HttpServletRequest request, @ModelAttribute("user") @Valid User user,
+	public String addUser(HttpServletRequest request, @ModelAttribute("user") User user,
 			BindingResult bindingResult) {
+		userVAlidator.validate(user, bindingResult);
 		if (bindingResult.hasErrors()) {//bien dung de kiem tra co loi hay ko, ==true thi co loi 
 			List<String> favorites = new ArrayList<>();
 			favorites.add("Movie");

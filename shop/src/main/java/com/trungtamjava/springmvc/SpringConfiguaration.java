@@ -18,6 +18,7 @@ import org.springframework.web.servlet.view.JstlView;
 import com.trungtamjava.model.Order;
 import com.trungtamjava.model.Person;
 import com.trungtamjava.model.User;
+import com.trungtamjava.validator.UserValidator;
 
 @Configuration
 @EnableWebMvc
@@ -74,5 +75,10 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/static/**").addResourceLocations("/resouces/");
 
+	}
+	
+	@Bean
+	public UserValidator userValidator() {
+		return new UserValidator();
 	}
 }
