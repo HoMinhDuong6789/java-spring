@@ -1,4 +1,4 @@
-package com.trungtamjava.springmvc;
+package com.trungtamjava.controller;
 
 import java.io.File;
 import java.io.FileNotFoundException;

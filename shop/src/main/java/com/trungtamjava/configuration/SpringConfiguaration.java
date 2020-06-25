@@ -1,4 +1,4 @@
-package com.trungtamjava.springmvc;
+package com.trungtamjava.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,7 +24,7 @@ import com.trungtamjava.validator.UserValidator;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.trungtamjava.springmvc")
+@ComponentScan(basePackages = "com.trungtamjava")
 public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 
 	@Bean
@@ -79,10 +79,10 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 
 	}
 
-	@Bean
-	public UserValidator userValidator() {
-		return new UserValidator();
-	}
+	//co the dung cach nay hoac @Compoment phia tren class
+	/*
+	 * @Bean public UserValidator userValidator() { return new UserValidator(); }
+	 */
 
 	@Bean(name = "multipartResolver")
 	public MultipartResolver multipartResolver() {

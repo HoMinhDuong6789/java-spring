@@ -1,4 +1,4 @@
-package com.trungtamjava.springmvc;
+package com.trungtamjava.configuration;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

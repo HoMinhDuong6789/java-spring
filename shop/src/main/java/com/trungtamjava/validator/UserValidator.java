@@ -1,12 +1,14 @@
 package com.trungtamjava.validator;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.trungtamjava.model.User;
 
+@Component
 public class UserValidator implements Validator{
 
 	@Override
