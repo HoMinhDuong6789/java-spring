@@ -8,6 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -76,9 +78,16 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/static/**").addResourceLocations("/resouces/");
 
 	}
-	
+
 	@Bean
 	public UserValidator userValidator() {
 		return new UserValidator();
+	}
+
+	@Bean(name = "multipartResolver")
+	public MultipartResolver multipartResolver() {
+		CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+		commonsMultipartResolver.setMaxUploadSize(-1);
+		return commonsMultipartResolver;
 	}
 }

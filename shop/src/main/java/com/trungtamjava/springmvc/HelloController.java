@@ -1,5 +1,9 @@
 package com.trungtamjava.springmvc;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.trungtamjava.model.Person;
@@ -25,7 +30,7 @@ import com.trungtamjava.validator.UserValidator;
 
 @Controller
 public class HelloController {
-	
+
 	@Autowired
 	private UserValidator userVAlidator;
 
@@ -82,22 +87,48 @@ public class HelloController {
 	}
 
 	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
-	public String addUser(HttpServletRequest request, @ModelAttribute("user") User user,
-			BindingResult bindingResult) {
+	public String addUser(HttpServletRequest request, @ModelAttribute("user") User user, BindingResult bindingResult) {
 		userVAlidator.validate(user, bindingResult);
-		if (bindingResult.hasErrors()) {//bien dung de kiem tra co loi hay ko, ==true thi co loi 
+		if (bindingResult.hasErrors()) {// bien dung de kiem tra co loi hay ko, ==true thi co loi
 			List<String> favorites = new ArrayList<>();
 			favorites.add("Movie");
 			favorites.add("Read");
 			favorites.add("Sport");
 			favorites.add("Code");
 			favorites.add("Travel");
-			//user.setFavorites(favorites);
+			// user.setFavorites(favorites);
 			request.setAttribute("list", favorites);
 			return "addUser";
 		}
 		// user = new User("j4Team");
 		request.setAttribute("user", user);
 		return "viewUser";
+	}
+
+	@RequestMapping(value = "/upload-file", method = RequestMethod.GET)
+	public String upload(HttpServletRequest request) {
+
+		return "upload";
+	}
+
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	public String upload(HttpServletRequest request, @RequestParam(name = "file") MultipartFile file) {
+		// file.getOriginalFilename();
+		// luu file vao thu muc tren may
+		File newFile = new File("/home/minhpc/workspaces/java-spring/shop/file/" + file.getOriginalFilename());
+		FileOutputStream fileOutputStream;
+		try {
+			fileOutputStream = new FileOutputStream(newFile);
+			fileOutputStream.write(file.getBytes());
+			fileOutputStream.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("file", file);
+		return "viewFile";
 	}
 }
