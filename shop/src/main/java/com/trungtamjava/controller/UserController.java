@@ -41,8 +41,8 @@ public class UserController {
 	
 
 	@RequestMapping(value = "/user-detail/{userId}", method = RequestMethod.GET)
-	public String viewUser(HttpServletRequest request, @PathVariable(value = "userId") int userId) {
-		List<User> users= userService.getAllUsers();
+	public String viewUser(HttpServletRequest request, @PathVariable(name = "userId") int userId) {
+		//List<User> users= userService.getAllUsers();
 		request.setAttribute("user", userService.getUserById(userId));
 		return "user/viewUser";
 	}
@@ -62,5 +62,12 @@ public class UserController {
 		userService.addUser(user);
 		request.setAttribute("user", user);
 		return "redirect:list-user";
+	}
+	
+	@RequestMapping(value = "/user-delete/{userId}", method = RequestMethod.GET)
+	public String deleteUser(HttpServletRequest request,
+			@PathVariable(name = "userId") int userId) {
+		userService.deleteUser(userId);
+		return "redirect:/list-user";
 	}
 }
