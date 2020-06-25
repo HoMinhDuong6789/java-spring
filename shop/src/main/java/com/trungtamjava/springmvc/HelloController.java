@@ -100,6 +100,21 @@ public class HelloController {
 			request.setAttribute("list", favorites);
 			return "addUser";
 		}
+
+		MultipartFile file = user.getAvatar();
+		File newFile = new File("/home/minhpc/workspaces/java-spring/shop/file/" + file.getOriginalFilename());
+		FileOutputStream fileOutputStream;
+		try {
+			fileOutputStream = new FileOutputStream(newFile);
+			fileOutputStream.write(file.getBytes());
+			fileOutputStream.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// user = new User("j4Team");
 		request.setAttribute("user", user);
 		return "viewUser";

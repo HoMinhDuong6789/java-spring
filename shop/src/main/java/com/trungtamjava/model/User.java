@@ -2,6 +2,8 @@ package com.trungtamjava.model;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class User {
 	private String name;
 	private String password;
@@ -11,7 +13,8 @@ public class User {
 	private String gender;
 	private String about;
 	private boolean acceptAgreement;
-
+	private MultipartFile avatar;
+	
 	public User() {
 
 	}
@@ -77,4 +80,13 @@ public class User {
 		this.name = name;
 	}
 
+	public MultipartFile getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(MultipartFile avatar) {
+		this.avatar = avatar;
+	}
+
+	
 }
