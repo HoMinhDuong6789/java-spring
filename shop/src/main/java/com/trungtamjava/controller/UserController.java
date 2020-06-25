@@ -1,10 +1,5 @@
 package com.trungtamjava.controller;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.trungtamjava.model.User;
 import com.trungtamjava.service.UserService;
@@ -69,5 +63,22 @@ public class UserController {
 			@PathVariable(name = "userId") int userId) {
 		userService.deleteUser(userId);
 		return "redirect:/list-user";
+	}
+	
+	@RequestMapping(value = "/user-edit/{userId}", method = RequestMethod.GET)
+	public String editUser(HttpServletRequest request,
+			@PathVariable(name = "userId") int userId) {
+		request.setAttribute("user", userService.getUserById(userId));
+		return "user/editUser";
+	}
+	
+	@RequestMapping(value = "/user-edit", method = RequestMethod.POST)
+	public String editUser(HttpServletRequest request, @ModelAttribute("user") User user, BindingResult bindingResult) {
+		userValidator.validate(user, bindingResult);
+		if (bindingResult.hasErrors()) {// bien dung de kiem tra co loi hay ko, ==true thi co loi
+			return "user/editUser";
+		}
+		userService.updateUser(user);
+		return "redirect:list-user";
 	}
 }

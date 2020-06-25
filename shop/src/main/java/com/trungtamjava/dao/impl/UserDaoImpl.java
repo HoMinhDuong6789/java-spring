@@ -26,7 +26,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void updateUser(User user) {
-		String sql = "UPDATE user SET tenkh=? AND sdt=? WHERE id=?";
+		String sql = "UPDATE user SET tenkh=?, sdt=? WHERE id=?";
 		jdbcTemplate.update(sql, user.getName(), user.getPhone(), user.getId());
 	}
 
@@ -53,7 +53,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public List<User> getAllUsers() {
 		String sql = "SELECT * FROM user ";
-		return jdbcTemplate.query(sql,new Object[]{} , new RowMapper<User>() {
+		return jdbcTemplate.query(sql, new Object[] {} , new RowMapper<User>() {
 			public User mapRow(ResultSet rs, int rowNumber) throws SQLException {
 				User user = new User();
 				user.setId(rs.getInt("id"));
