@@ -25,7 +25,7 @@
 		<p>Password</p>
 		<form:password path="password" />
 		<p style="color: red;">
-			<form:errors path="password"></form:errors>
+			<%-- <form:errors path="password"></form:errors> --%>
 		</p>
 		<p>Favorites</p>
 		<form:checkboxes path="favorites" items="${list}" />

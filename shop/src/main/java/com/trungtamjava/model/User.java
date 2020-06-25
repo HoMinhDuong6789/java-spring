@@ -8,13 +8,13 @@ public class User {
 	private String name;
 	private String password;
 	private int id;
-	
+	private String phone;
 	private List<String> favorites;
 	private String gender;
 	private String about;
 	private boolean acceptAgreement;
 	private MultipartFile avatar;
-	
+
 	public User() {
 
 	}
@@ -22,6 +22,12 @@ public class User {
 	public User(String name) {
 		super();
 		this.name = name;
+	}
+
+	public User(String name, String phone) {
+		super();
+		this.name = name;
+		this.phone = phone;
 	}
 
 	public String getPassword() {
@@ -38,6 +44,14 @@ public class User {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public List<String> getFavorites() {
@@ -88,5 +102,4 @@ public class User {
 		this.avatar = avatar;
 	}
 
-	
 }
