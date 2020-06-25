@@ -127,23 +127,27 @@ public class HelloController {
 	}
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public String upload(HttpServletRequest request, @RequestParam(name = "file") MultipartFile file) {
+	public String upload(HttpServletRequest request, @RequestParam(name = "file") List<MultipartFile> files) {
 		// file.getOriginalFilename();
-		// luu file vao thu muc tren may
-		File newFile = new File("/home/minhpc/workspaces/java-spring/shop/file/" + file.getOriginalFilename());
-		FileOutputStream fileOutputStream;
-		try {
-			fileOutputStream = new FileOutputStream(newFile);
-			fileOutputStream.write(file.getBytes());
-			fileOutputStream.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
+		for (MultipartFile file : files) {
+
+			// luu file vao thu muc tren may
+			File newFile = new File("/home/minhpc/workspaces/java-spring/shop/file/" + file.getOriginalFilename());
+			FileOutputStream fileOutputStream;
+			try {
+				fileOutputStream = new FileOutputStream(newFile);
+				fileOutputStream.write(file.getBytes());
+				fileOutputStream.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		request.setAttribute("file", file);
+		request.setAttribute("files", files);
 		return "viewFile";
 	}
 }

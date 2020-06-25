@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
@@ -21,10 +21,10 @@
 	<p>About: ${user.about}</p>
 	<p>AcceptAgreement: ${user.acceptAgreement}</p>
 	<p>Favorites:</p>
-<p>File Information</p>
-	<p>Name: ${user.avatar.getOriginalFilename()}
-	<%-- <c:forEach items="${user.favorites }" var="item">
-		<p>${item}</p>
-	</c:forEach> --%>
-</body>
+	<p>File Information</p>
+	<p>
+		Name: ${user.avatar.getOriginalFilename()}
+		<c:forEach items="${user.favorites }" var="item">
+			<p>${item}</p>
+		</c:forEach></body>
 </html>

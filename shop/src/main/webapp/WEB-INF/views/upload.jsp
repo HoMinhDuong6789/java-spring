@@ -16,6 +16,8 @@
 	<c:url value="/upload" var="url" />
 	<form method="post" action="${url}" enctype="multipart/form-data">
 		<input type="file" name="file">
+		<input type="file" name="file">
+		<input type="file" name="file">
 		<button type="submit">Submit</button>
 	</form>
 </body>
