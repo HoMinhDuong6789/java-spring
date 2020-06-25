@@ -8,7 +8,9 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -23,14 +25,16 @@ import org.springframework.web.servlet.view.JstlView;
 
 import com.trungtamjava.model.Order;
 import com.trungtamjava.model.Person;
-import com.trungtamjava.model.User;
-import com.trungtamjava.validator.UserValidator;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.trungtamjava")
+@ComponentScan(basePackages = {"com.trungtamjava"})
+@PropertySource(value = {"classpath:db.properties"})
 public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 
+	@Autowired
+	org.springframework.core.env.Environment enviroment;
+	
 	@Bean
 	public ViewResolver viewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -99,6 +103,12 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		/*
+		 * dataSource.setDriverClassName(enviroment.getProperty("driver"));
+		 * dataSource.setUrl(enviroment.getProperty("url"));
+		 * dataSource.setUsername(enviroment.getProperty("user"));
+		 * dataSource.setPassword(enviroment.getProperty("password"));
+		 */
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://localhost:3308/shop");
 		dataSource.setUsername("root");
@@ -111,5 +121,9 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 		return new JdbcTemplate(dataSource());
 	}
 	
+	@Bean
+	public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
+		return new PropertySourcesPlaceholderConfigurer();
+	}
 	
 }
