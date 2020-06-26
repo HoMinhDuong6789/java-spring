@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,7 +19,7 @@ import com.trungtamjava.validator.UserValidator;
 
 @Controller
 public class UserController {
-
+	private static Logger logger = Logger.getLogger(UserController.class);
 	@Autowired
 	UserValidator userValidator;
 	
@@ -29,7 +30,7 @@ public class UserController {
 	public String getAllUser(HttpServletRequest request) {
 		List<UserDTO> users= userService.getAllUsers();
 		request.setAttribute("users", users);
-		
+		logger.info("User Information");
 		return "user/listUser";
 	}
 	
