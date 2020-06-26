@@ -18,6 +18,11 @@ public class WebInitalizer implements WebApplicationInitializer{
 		ctx.register(SpringConfiguaration.class);
 		ctx.setServletContext(container);
 		
+		//Bai20 2:56
+		DispatcherServlet dispatcherServlet = new DispatcherServlet(ctx);
+		dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
+		
+		
 		ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(ctx));
 		dispatcher.setLoadOnStartup(1);
 		dispatcher.addMapping("/");
