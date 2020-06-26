@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.trungtamjava.dao.UserDao;
 import com.trungtamjava.model.User;
 import com.trungtamjava.service.UserService;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -18,6 +20,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void addUser(User user) {
 		userDao.addUser(user);
+		throw new RuntimeException();
 	}
 
 	@Override

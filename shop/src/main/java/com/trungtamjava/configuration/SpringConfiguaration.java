@@ -13,7 +13,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
@@ -30,6 +32,7 @@ import com.trungtamjava.model.Person;
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.trungtamjava"})
 @PropertySource(value = {"classpath:db.properties"})
+@EnableTransactionManagement
 public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 
 	@Autowired
@@ -124,6 +127,11 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
+	}
+	
+	@Bean(name = "transactionManager")
+	public DataSourceTransactionManager dataSourceTransactionManager() {
+		return new DataSourceTransactionManager(dataSource());
 	}
 	
 }
