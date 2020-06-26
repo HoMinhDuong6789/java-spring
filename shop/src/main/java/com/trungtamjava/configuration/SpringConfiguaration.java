@@ -1,7 +1,10 @@
 package com.trungtamjava.configuration;
 
+import java.util.Properties;
+
 import javax.sql.DataSource;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
@@ -12,9 +15,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -30,14 +33,14 @@ import com.trungtamjava.model.Person;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.trungtamjava"})
-@PropertySource(value = {"classpath:db.properties"})
+@ComponentScan(basePackages = { "com.trungtamjava" })
+@PropertySource(value = { "classpath:db.properties" })
 @EnableTransactionManagement
 public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 
 	@Autowired
 	org.springframework.core.env.Environment enviroment;
-	
+
 	@Bean
 	public ViewResolver viewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -90,7 +93,7 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 
 	}
 
-	//co the dung cach nay hoac @Compoment phia tren class
+	// co the dung cach nay hoac @Compoment phia tren class
 	/*
 	 * @Bean public UserValidator userValidator() { return new UserValidator(); }
 	 */
@@ -101,8 +104,7 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 		commonsMultipartResolver.setMaxUploadSize(-1);
 		return commonsMultipartResolver;
 	}
-	
-	
+
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -118,20 +120,49 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 		dataSource.setPassword("");
 		return dataSource;
 	}
-	
-	@Bean
-	public JdbcTemplate jdbcTemplate() {
-		return new JdbcTemplate(dataSource());
-	}
-	
+
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
 	}
-	
-	@Bean(name = "transactionManager")
-	public DataSourceTransactionManager dataSourceTransactionManager() {
-		return new DataSourceTransactionManager(dataSource());
+
+	/*
+	 * @Bean public JdbcTemplate jdbcTemplate() { return new
+	 * JdbcTemplate(dataSource()); }
+	 * 
+	 * 
+	 * @Bean(name = "transactionManager") public DataSourceTransactionManager
+	 * dataSourceTransactionManager() { return new
+	 * DataSourceTransactionManager(dataSource()); }
+	 */
+
+	@Bean
+	public LocalSessionFactoryBean sessionFactoryBean() {
+		LocalSessionFactoryBean bean = new LocalSessionFactoryBean();
+		bean.setDataSource(dataSource());
+		bean.setPackagesToScan("com.trungtamjava.entity");
+
+		// tao properties
+		Properties hibernateProperties = new Properties();
+		// https://www.tutorialspoint.com/hibernate/hibernate_configuration.htm
+		// org.hibernate.dialect.MySQLDialect
+		//hibernateProperties.put("hibernate.dialect", hibernateProperties.get("hibernate.dialect"));
+		//hibernateProperties.put("hibernate,show_sql", hibernateProperties.get("hibernate,show_sql"));
+		
+		hibernateProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+		hibernateProperties.put("hibernate,show_sql", true);
+		bean.setHibernateProperties(hibernateProperties);
+
+		return bean;
 	}
 	
+	@Bean (name = "transactionManager")
+	@Autowired
+	public HibernateTransactionManager hibernateTransactionManager(SessionFactory sessionFactory) {
+		HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
+		hibernateTransactionManager.setSessionFactory(sessionFactory);
+		
+		return hibernateTransactionManager;
+	}
+
 }

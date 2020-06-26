@@ -2,18 +2,18 @@ package com.trungtamjava.service;
 
 import java.util.List;
 
-import com.trungtamjava.model.User;
+import com.trungtamjava.model.UserDTO;
 
 public interface UserService {
 
-	public void addUser(User user);
+	public void addUser(UserDTO user);
 
-	public void updateUser(User user);
+	public void updateUser(UserDTO user);
 
 	public void deleteUser(int id);
 
-	public User getUserById(int id);
+	public UserDTO getUserById(int id);
 
-	public List<User> getAllUsers();
+	public List<UserDTO> getAllUsers();
 
 }

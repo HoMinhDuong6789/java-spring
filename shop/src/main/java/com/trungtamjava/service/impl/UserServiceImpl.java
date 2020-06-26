@@ -1,5 +1,6 @@
 package com.trungtamjava.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.trungtamjava.dao.UserDao;
-import com.trungtamjava.model.User;
+import com.trungtamjava.entity.User;
+import com.trungtamjava.model.UserDTO;
 import com.trungtamjava.service.UserService;
 
 @Service
@@ -18,29 +20,53 @@ public class UserServiceImpl implements UserService {
 	UserDao userDao;
 	
 	@Override
-	public void addUser(User user) {
+	public void addUser(UserDTO userDTO) {
+		User user = new User();
+		user.setName(userDTO.getName());
+		user.setPhone(userDTO.getPhone());
 		userDao.addUser(user);
-		throw new RuntimeException();
 	}
 
 	@Override
-	public void updateUser(User user) {
+	public void updateUser(UserDTO userDTO) {
+		User user = userDao.getUserById(userDTO.getId());
+		if(user!=null) {
+			user.setName(userDTO.getName());
+			user.setPhone(userDTO.getPhone());
+		}
 		userDao.updateUser(user);
 	}
 
 	@Override
 	public void deleteUser(int id) {
-		userDao.deleteUser(id);
+		User user = userDao.getUserById(id);
+		if(user!=null) {
+			userDao.deleteUser(id);
+		}
+		
 	}
 
 	@Override
-	public User getUserById(int id) {
-		return userDao.getUserById(id);
+	public UserDTO getUserById(int id) {
+		User user = userDao.getUserById(id);
+		
+		UserDTO userDTO = new UserDTO(user.getName(), user.getPhone());
+		userDTO.setId(id);
+		return userDTO;
 	}
 
 	@Override
-	public List<User> getAllUsers() {
-		return userDao.getAllUsers();
+	public List<UserDTO> getAllUsers() {
+		List<User> users = userDao.getAllUsers();
+		List<UserDTO> userDTOs = new ArrayList<>();
+		for(User user:users) {
+			UserDTO userDTO = new UserDTO();
+			userDTO.setId(user.getId());
+			userDTO.setName(user.getName());
+			userDTO.setPhone(user.getPhone());
+			userDTOs.add(userDTO);
+		}
+		return userDTOs;
 	}
 
 	

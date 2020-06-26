@@ -2,7 +2,7 @@ package com.trungtamjava.dao;
 
 import java.util.List;
 
-import com.trungtamjava.model.User;
+import com.trungtamjava.entity.User;
 
 public interface UserDao {
 	public void addUser(User user);

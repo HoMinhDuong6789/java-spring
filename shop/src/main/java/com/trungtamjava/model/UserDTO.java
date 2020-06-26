@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class User {
+public class UserDTO {
 	private String name;
 	private String password;
 	private int id;
@@ -15,16 +15,16 @@ public class User {
 	private boolean acceptAgreement;
 	private MultipartFile avatar;
 
-	public User() {
+	public UserDTO() {
 
 	}
 
-	public User(String name) {
+	public UserDTO(String name) {
 		super();
 		this.name = name;
 	}
 
-	public User(String name, String phone) {
+	public UserDTO(String name, String phone) {
 		super();
 		this.name = name;
 		this.phone = phone;

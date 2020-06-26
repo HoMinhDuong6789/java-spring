@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.trungtamjava.model.User;
+import com.trungtamjava.model.UserDTO;
 import com.trungtamjava.service.UserService;
 import com.trungtamjava.validator.UserValidator;
 
@@ -27,7 +27,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/list-user", method = RequestMethod.GET)
 	public String getAllUser(HttpServletRequest request) {
-		List<User> users= userService.getAllUsers();
+		List<UserDTO> users= userService.getAllUsers();
 		request.setAttribute("users", users);
 		
 		return "user/listUser";
@@ -43,12 +43,12 @@ public class UserController {
 	
 	@RequestMapping(value = "/user-insert", method = RequestMethod.GET)
 	public String addUser(HttpServletRequest request) {
-		request.setAttribute("user",new User());
+		request.setAttribute("user",new UserDTO());
 		return "user/addUser";
 	}
 	
 	@RequestMapping(value = "/user-insert", method = RequestMethod.POST)
-	public String addUser(HttpServletRequest request, @ModelAttribute("user") User user, BindingResult bindingResult) {
+	public String addUser(HttpServletRequest request, @ModelAttribute("user") UserDTO user, BindingResult bindingResult) {
 		userValidator.validate(user, bindingResult);
 		if (bindingResult.hasErrors()) {// bien dung de kiem tra co loi hay ko, ==true thi co loi
 			return "user/addUser";
@@ -73,7 +73,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/user-edit", method = RequestMethod.POST)
-	public String editUser(HttpServletRequest request, @ModelAttribute("user") User user, BindingResult bindingResult) {
+	public String editUser(HttpServletRequest request, @ModelAttribute("user") UserDTO user, BindingResult bindingResult) {
 		userValidator.validate(user, bindingResult);
 		if (bindingResult.hasErrors()) {// bien dung de kiem tra co loi hay ko, ==true thi co loi
 			return "user/editUser";

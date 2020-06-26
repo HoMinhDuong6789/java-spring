@@ -28,7 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.trungtamjava.model.Person;
-import com.trungtamjava.model.User;
+import com.trungtamjava.model.UserDTO;
 import com.trungtamjava.validator.UserValidator;
 
 @Controller
@@ -75,7 +75,7 @@ public class HelloController {
 	 */
 	@RequestMapping(value = "/adduser", method = RequestMethod.GET)
 	public String addUser(HttpServletRequest request) {
-		User user = new User("j4Team");
+		UserDTO user = new UserDTO("j4Team");
 		request.setAttribute("user", user);
 		List<String> favorites = new ArrayList<>();
 		favorites.add("Movie");
@@ -90,7 +90,7 @@ public class HelloController {
 	}
 
 	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
-	public String addUser(HttpServletRequest request, @ModelAttribute("user") User user, BindingResult bindingResult) {
+	public String addUser(HttpServletRequest request, @ModelAttribute("user") UserDTO user, BindingResult bindingResult) {
 		userVAlidator.validate(user, bindingResult);
 		if (bindingResult.hasErrors()) {// bien dung de kiem tra co loi hay ko, ==true thi co loi
 			List<String> favorites = new ArrayList<>();
