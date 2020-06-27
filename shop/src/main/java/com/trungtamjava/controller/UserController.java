@@ -36,20 +36,20 @@ public class UserController {
 		List<UserDTO> users = userService.getAllUsers();
 		request.setAttribute("users", users);
 		// logger.info("User Information");
-		return "user/listUser";
+		return "listUser";
 	}
 
 	@RequestMapping(value = "/user-detail/{userId}", method = RequestMethod.GET)
 	public String viewUser(HttpServletRequest request, @PathVariable(name = "userId") int userId) {
 		// List<User> users= userService.getAllUsers();
 		request.setAttribute("user", userService.getUserById(userId));
-		return "user/viewUser";
+		return "viewUser";
 	}
 
 	@RequestMapping(value = "/user-insert", method = RequestMethod.GET)
 	public String addUser(HttpServletRequest request) {
 		request.setAttribute("user", new UserDTO());
-		return "user/addUser";
+		return "addUser";
 	}
 
 	@RequestMapping(value = "/user-insert", method = RequestMethod.POST)
@@ -57,7 +57,7 @@ public class UserController {
 			BindingResult bindingResult) {
 		userValidator.validate(user, bindingResult);
 		if (bindingResult.hasErrors()) {// bien dung de kiem tra co loi hay ko, ==true thi co loi
-			return "user/addUser";
+			return "addUser";
 		}
 		userService.addUser(user);
 		request.setAttribute("user", user);
@@ -73,7 +73,7 @@ public class UserController {
 	@RequestMapping(value = "/user-edit/{userId}", method = RequestMethod.GET)
 	public String editUser(HttpServletRequest request, @PathVariable(name = "userId") int userId) {
 		request.setAttribute("user", userService.getUserById(userId));
-		return "user/editUser";
+		return "editUser";
 	}
 
 	@RequestMapping(value = "/user-edit", method = RequestMethod.POST)
@@ -81,7 +81,7 @@ public class UserController {
 			BindingResult bindingResult) {
 		userValidator.validate(user, bindingResult);
 		if (bindingResult.hasErrors()) {// bien dung de kiem tra co loi hay ko, ==true thi co loi
-			return "user/editUser";
+			return "editUser";
 		}
 		userService.updateUser(user);
 		return "redirect:list-user";

@@ -27,6 +27,8 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import com.trungtamjava.model.Order;
 import com.trungtamjava.model.Person;
@@ -43,10 +45,13 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 
 	@Bean
 	public ViewResolver viewResolver() {
-		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-		viewResolver.setViewClass(JstlView.class);
-		viewResolver.setPrefix("/WEB-INF/views/");
-		viewResolver.setSuffix(".jsp");
+		/*
+		 * InternalResourceViewResolver viewResolver = new
+		 * InternalResourceViewResolver(); viewResolver.setViewClass(JstlView.class);
+		 * viewResolver.setPrefix("/WEB-INF/views/"); viewResolver.setSuffix(".jsp");
+		 */
+		
+		TilesViewResolver viewResolver = new TilesViewResolver();
 		return viewResolver;
 	}
 
@@ -146,23 +151,36 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 		Properties hibernateProperties = new Properties();
 		// https://www.tutorialspoint.com/hibernate/hibernate_configuration.htm
 		// org.hibernate.dialect.MySQLDialect
-		//hibernateProperties.put("hibernate.dialect", hibernateProperties.get("hibernate.dialect"));
-		//hibernateProperties.put("hibernate,show_sql", hibernateProperties.get("hibernate,show_sql"));
-		
+		// hibernateProperties.put("hibernate.dialect",
+		// hibernateProperties.get("hibernate.dialect"));
+		// hibernateProperties.put("hibernate,show_sql",
+		// hibernateProperties.get("hibernate,show_sql"));
+
 		hibernateProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 		hibernateProperties.put("hibernate,show_sql", true);
 		bean.setHibernateProperties(hibernateProperties);
 
 		return bean;
 	}
-	
-	@Bean (name = "transactionManager")
+
+	@Bean(name = "transactionManager")
 	@Autowired
 	public HibernateTransactionManager hibernateTransactionManager(SessionFactory sessionFactory) {
 		HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
 		hibernateTransactionManager.setSessionFactory(sessionFactory);
-		
+
 		return hibernateTransactionManager;
 	}
+
+	@Bean
+	public TilesConfigurer titConfigurer() {
+		TilesConfigurer configurer = new TilesConfigurer();
+		configurer.setDefinitions("classpath:tiles.xml");
+		configurer.setCheckRefresh(true);
+
+		return configurer;
+	}
+	
+
 
 }
