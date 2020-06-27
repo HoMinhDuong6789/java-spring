@@ -87,23 +87,4 @@ public class UserController {
 		return "redirect:list-user";
 	}
 
-	@RequestMapping(value = "/users", method = RequestMethod.GET)
-	public @ResponseBody List<UserDTO> listUser(HttpServletRequest request) {  // chuyeern ddoir mot list, thanh dangj json or xml tuy theo yeu caum convert tuw server ve json/xml
-		List<UserDTO> users = userService.getAllUsers();
-		request.setAttribute("users", users);
-		return users;
-	}
-
-	@RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
-	public @ResponseBody UserDTO detailUser(HttpServletRequest request, @PathVariable(name = "userId") int userId) {
-		// List<User> users= userService.getAllUsers();
-		request.setAttribute("user", userService.getUserById(userId));
-		return userService.getUserById(userId);
-	}
-
-	@RequestMapping(value = "/add-user", method = RequestMethod.POST)
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public @ResponseBody void addUser(@RequestBody UserDTO user) { //@RequestBody: convert json -> thanh cac doi tuong DTO
-		userService.addUser(user);
-	}
 }
