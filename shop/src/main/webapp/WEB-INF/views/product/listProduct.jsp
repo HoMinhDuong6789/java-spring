@@ -7,7 +7,8 @@
 <p>List Product</p>
 <hr />
 <a href="<c:url value='/product-insert'></c:url>">Add new product</a>
-<br/>
+<br />
+<h1>${msg}</h1>
 <table>
 	<tr>
 		<th>Id</th>

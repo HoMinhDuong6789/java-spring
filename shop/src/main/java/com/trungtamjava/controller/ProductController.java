@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,9 +25,13 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 
+	@Autowired
+	private MessageSource messageSource;
+
 	@RequestMapping(value = "/list-product", method = RequestMethod.GET)
 	public String getAllProduct(HttpServletRequest request, HttpSession session) {
-		List<ProductDTO>products = productService.getAllProducts();
+		List<ProductDTO> products = productService.getAllProducts();
+		request.setAttribute("msg",messageSource.getMessage("product.name", null, null));
 		request.setAttribute("products", products);
 		return "listProduct";
 
@@ -77,5 +82,5 @@ public class ProductController {
 		productService.updateProduct(product);
 		return "redirect:list-product";
 	}
-	
+
 }
