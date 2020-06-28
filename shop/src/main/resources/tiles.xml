@@ -20,24 +20,49 @@
 	<!-- Home Page -->
 	<definition name="addUser" extends="base-definition">
 		<put-attribute name="body"
-			value="/WEB-INF/views//user/addUser.jsp" />
+			value="/WEB-INF/views/user/addUser.jsp" />
 	</definition>
 
 	<definition name="editUser" extends="base-definition">
 		<put-attribute name="body"
-			value="/WEB-INF/views//user/editUser.jsp" />
+			value="/WEB-INF/views/user/editUser.jsp" />
 	</definition>
 
 	<definition name="listUser" extends="base-definition">
 		<put-attribute name="body"
-			value="/WEB-INF/views//user/listUser.jsp" />
+			value="/WEB-INF/views/user/listUser.jsp" />
 	</definition>
 
 	<definition name="viewUser" extends="base-definition">
 		<put-attribute name="body"
-			value="/WEB-INF/views//user/viewUser.jsp" />
+			value="/WEB-INF/views/user/viewUser.jsp" />
 	</definition>
 
+	<!--Product -->
+	<definition name="addProduct" extends="base-definition">
+		<put-attribute name="body"
+			value="/WEB-INF/views/product/addProduct.jsp" />
+	</definition>
+
+	<definition name="editProduct" extends="base-definition">
+		<put-attribute name="body"
+			value="/WEB-INF/views/product/editProduct.jsp" />
+	</definition>
+
+	<definition name="listProduct" extends="base-definition">
+		<put-attribute name="body"
+			value="/WEB-INF/views/product/listProduct.jsp" />
+	</definition>
+
+	<definition name="viewProduct" extends="base-definition">
+		<put-attribute name="body"
+			value="/WEB-INF/views/product/viewProduct.jsp" />
+	</definition>
+
+	<definition name="cart" extends="base-definition">
+		<put-attribute name="body"
+			value="/WEB-INF/views/cart/cart.jsp" />
+	</definition>
 
 
 

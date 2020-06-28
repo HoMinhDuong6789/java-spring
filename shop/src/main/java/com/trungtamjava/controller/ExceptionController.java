@@ -12,16 +12,16 @@ public class ExceptionController {
 	@ExceptionHandler(value = { NoHandlerFoundException.class})
 	public String exceptionHandler(Exception exception) {
 		//exception.printStackTrace();
-		System.err.println(exception);
-		logger.error(exception);
+		//System.err.println(exception);
+		//logger.error(exception);
 		return "404";
 	}
 	
 	@ExceptionHandler(value = { Exception.class})
 	public String exceptionALl(Exception exception) {
 		//exception.printStackTrace();
-		System.err.println(exception);
-		logger.error(exception);
+		//System.err.println(exception);
+		//logger.error(exception);
 		return "error";
 	}
 }
