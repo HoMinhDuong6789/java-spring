@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,6 +29,9 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	MailSender mailSender;
 
 	@RequestMapping(value = "/list-user", method = RequestMethod.GET)
 	public String getAllUser(HttpServletRequest request, HttpSession session) {
@@ -81,8 +86,19 @@ public class UserController {
 		if (bindingResult.hasErrors()) {// bien dung de kiem tra co loi hay ko, ==true thi co loi
 			return "editUser";
 		}
+
+		//sendEmail("minhans29@gmail.com", "minhans29@gmail.com", "test", "this is email for test");
 		userService.updateUser(user);
 		return "redirect:list-user";
+	}
+
+	public void sendEmail(String from, String to, String subject, String content) {
+		SimpleMailMessage mailMessage = new SimpleMailMessage();
+		mailMessage.setFrom(from);
+		mailMessage.setTo(to);
+		mailMessage.setSubject(subject);
+		mailMessage.setText(content);
+		mailSender.send(mailMessage);
 	}
 
 }
