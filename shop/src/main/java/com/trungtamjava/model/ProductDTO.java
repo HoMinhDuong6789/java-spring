@@ -1,9 +1,13 @@
 package com.trungtamjava.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProductDTO {
 	private int id;
 	private String name;
 	private double price;
+	private String image_url;
+	private MultipartFile file;
 
 	public ProductDTO() {
 
@@ -37,6 +41,22 @@ public class ProductDTO {
 
 	public int getId() {
 		return id;
+	}
+
+	public String getImage_url() {
+		return image_url;
+	}
+
+	public void setImage_url(String image_url) {
+		this.image_url = image_url;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 
 	@Override

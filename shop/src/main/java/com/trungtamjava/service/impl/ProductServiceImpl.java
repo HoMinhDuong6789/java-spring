@@ -24,6 +24,7 @@ public class ProductServiceImpl implements ProductService {
 		Product product = new Product();
 		product.setName(productDTO.getName());
 		product.setPrice(productDTO.getPrice());
+		product.setImage_url(productDTO.getImage_url());
 		productDao.addProduct(product);
 	}
 
@@ -50,9 +51,12 @@ public class ProductServiceImpl implements ProductService {
 		product = productDao.getProductById(id);
 		ProductDTO productDTO = new ProductDTO();
 		if (product != null) {
+			productDTO.setId(product.getId());
 			productDTO.setName(product.getName());
 			productDTO.setPrice(product.getPrice());
+			productDTO.setImage_url(product.getImage_url());
 		}
+
 		return productDTO;
 	}
 
@@ -60,7 +64,7 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductDTO> getAllProducts() {
 		List<Product> products = productDao.getAllProducts();
 		List<ProductDTO> productDTOs = new ArrayList<>();
-		for(Product product:products) {
+		for (Product product : products) {
 			ProductDTO productDTO = new ProductDTO(product.getName(), product.getPrice());
 			productDTO.setId(product.getId());
 			productDTOs.add(productDTO);

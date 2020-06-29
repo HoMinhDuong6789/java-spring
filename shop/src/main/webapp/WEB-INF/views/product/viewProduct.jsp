@@ -7,5 +7,6 @@
 	<p>Product Information</p>
 	<p>Id: ${product.id}</p>
 	<p>Name: ${product.name}</p>
-	<p>Password: ${product.price}</p>
+	<p>Price: ${product.price}</p>
+	<p><img width="200px" height="200px" src="<c:url value='/file/${product.image_url}'/>"/></p>
 </body>

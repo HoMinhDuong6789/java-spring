@@ -22,6 +22,8 @@ public class Product implements Serializable {
 	private String name;
 	@Column(name = "price")
 	private double price;
+	@Column(name = "image_url")
+	private String image_url;
 
 	public Product() {
 		// TODO Auto-generated constructor stub
@@ -51,6 +53,18 @@ public class Product implements Serializable {
 
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getImage_url() {
+		return image_url;
+	}
+
+	public void setImage_url(String image_url) {
+		this.image_url = image_url;
 	}
 
 	@Override

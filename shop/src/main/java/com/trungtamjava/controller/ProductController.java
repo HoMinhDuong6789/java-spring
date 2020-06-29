@@ -1,5 +1,9 @@
 package com.trungtamjava.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.trungtamjava.model.ProductDTO;
 import com.trungtamjava.service.ProductService;
@@ -34,13 +39,15 @@ public class ProductController {
 		request.setAttribute("msg",messageSource.getMessage("product.name", null, null));
 		request.setAttribute("products", products);
 		return "listProduct";
-
 	}
 
 	@RequestMapping(value = "/product-detail/{productId}", method = RequestMethod.GET)
 	public String viewProduct(HttpServletRequest request, @PathVariable(name = "productId") int productId) {
 		// List<User> users= userService.getAllUsers();
 		request.setAttribute("product", productService.getProductById(productId));
+		
+		
+		
 		return "viewProduct";
 	}
 
@@ -51,13 +58,33 @@ public class ProductController {
 	}
 
 	@RequestMapping(value = "/product-insert", method = RequestMethod.POST)
-	public String addProduct(HttpServletRequest request, @ModelAttribute("product") ProductDTO product,
+	public String addProduct(HttpServletRequest request, @ModelAttribute("product") ProductDTO productDTO,
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {// bien dung de kiem tra co loi hay ko, ==true thi co loi
 			return "addProduct";
 		}
-		productService.addProduct(product);
-		request.setAttribute("product", product);
+		
+		MultipartFile file = productDTO.getFile();
+		File newFile = new File("/home/minhpc/workspaces/java-spring/shop/src/main/webapp/resouces/file/upload/" + file.getOriginalFilename());
+		FileOutputStream fileOutputStream;
+		try {
+			fileOutputStream = new FileOutputStream(newFile);
+			fileOutputStream.write(file.getBytes());
+			fileOutputStream.close();
+
+			//luu file vao CSDL
+			productDTO.setImage_url(file.getOriginalFilename());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		productService.addProduct(productDTO);
+		request.setAttribute("product", productDTO);
 		return "redirect:list-product";
 	}
 

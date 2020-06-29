@@ -16,6 +16,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -83,7 +85,8 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/static/**").addResourceLocations("/resouces/");
-
+		registry.addResourceHandler("/file/**").addResourceLocations(
+				"file:/home/minhpc/workspaces/java-spring/shop/src/main/webapp/resouces/file/upload/");
 	}
 
 	// co the dung cach nay hoac @Compoment phia tren class
@@ -177,6 +180,28 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 		configurer.setDefinitions("classpath:tiles.xml");
 		configurer.setCheckRefresh(true);
 		return configurer;
+	}
+
+	@Bean
+	public JavaMailSender getMailSender() {
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+
+		// usingGmail
+		mailSender.setHost("smtp.gmail.com");
+		mailSender.setPort(587);
+		;
+		mailSender.setUsername("your-gmail-id");
+		mailSender.setPassword("your pasdword");
+
+		Properties javaMailProperties = new Properties();
+		javaMailProperties.put("mail.smtp.stattls.enable", "true");
+		javaMailProperties.put("mail.smtp.auth", "true");
+		javaMailProperties.put("mail.transport.protocol", "smtp");
+		javaMailProperties.put("mail.debug", "true"); // prints out everything on screen
+
+		mailSender.setJavaMailProperties(javaMailProperties);
+		return mailSender;
+
 	}
 
 }

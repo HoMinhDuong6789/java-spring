@@ -16,5 +16,11 @@
 		<spring:message code="product.price"></spring:message>
 	</p>
 	<form:input path="price" />
+	<p>
+		Image
+	</p>
+	<form:input type="file" path="file" />
+
+
 	<button type="submit">Submit</button>
 </form:form>
