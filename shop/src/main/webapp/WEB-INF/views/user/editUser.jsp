@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <p>form User</p>
-<c:url value="/user-edit" var="url" />
+<c:url value="/admin/user-edit" var="url" />
 <form:form modelAttribute="user" method="post" action="${url}"
 	enctype="multipart/form-data">
 	<form:hidden path="id" />

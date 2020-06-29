@@ -19,6 +19,7 @@ import com.trungtamjava.service.UserService;
 import com.trungtamjava.validator.UserValidator;
 
 @Controller
+@RequestMapping("/admin")
 public class UserController {
 	private static Logger logger = Logger.getLogger(UserController.class);
 	@Autowired

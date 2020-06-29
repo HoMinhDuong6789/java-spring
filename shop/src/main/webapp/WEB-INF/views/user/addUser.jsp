@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <p>form User</p>
-<c:url value="/user-insert" var="url" />
+<c:url value="/admin/user-insert" var="url" />
 <form:form modelAttribute="user" method="post" action="${url}"
 	enctype="multipart/form-data">
 	<form:hidden path="id" />
