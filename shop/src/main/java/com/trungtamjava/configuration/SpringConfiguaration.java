@@ -43,18 +43,6 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 	@Autowired
 	org.springframework.core.env.Environment enviroment;
 
-	@Bean
-	public ViewResolver viewResolver() {
-		/*
-		 * InternalResourceViewResolver viewResolver = new
-		 * InternalResourceViewResolver(); viewResolver.setViewClass(JstlView.class);
-		 * viewResolver.setPrefix("/WEB-INF/views/"); viewResolver.setSuffix(".jsp");
-		 */
-		
-		TilesViewResolver viewResolver = new TilesViewResolver();
-		return viewResolver;
-	}
-
 	@Bean(name = "person", initMethod = "init", destroyMethod = "destroy")
 	@Scope(value = "prototype")
 	public Person person() {
@@ -173,13 +161,22 @@ public class SpringConfiguaration extends WebMvcConfigurerAdapter {
 	}
 
 	@Bean
+	public ViewResolver viewResolver() {
+		/*
+		 * InternalResourceViewResolver viewResolver = new
+		 * InternalResourceViewResolver(); viewResolver.setViewClass(JstlView.class);
+		 * viewResolver.setPrefix("/WEB-INF/views/"); viewResolver.setSuffix(".jsp");
+		 */
+		TilesViewResolver viewResolver = new TilesViewResolver();
+		return viewResolver;
+	}
+
+	@Bean
 	public TilesConfigurer titConfigurer() {
 		TilesConfigurer configurer = new TilesConfigurer();
 		configurer.setDefinitions("classpath:tiles.xml");
 		configurer.setCheckRefresh(true);
 		return configurer;
 	}
-	
-
 
 }

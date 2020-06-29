@@ -7,7 +7,7 @@
 <p>List Users</p>
 <hr />
 <a href="<c:url value='/user-insert'></c:url>">Add new user</a>
-</br>
+<br/>
 <table>
 	<tr>
 		<th>Id</th>

@@ -23,7 +23,7 @@ public class WebInitalizer implements WebApplicationInitializer{
 		dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
 		
 		
-		ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(ctx));
+		ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", dispatcherServlet);
 		dispatcher.setLoadOnStartup(1);
 		dispatcher.addMapping("/");
 		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter("UTF-8", true);

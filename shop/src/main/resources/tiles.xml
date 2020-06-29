@@ -1,57 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
 
 	<!-- Base Definition -->
-	<definition name="base-definition"
-		template="/WEB-INF/views/layout/defaultLayout.jsp">
+	<definition name="base-definition" template="/WEB-INF/views/layout/defaultLayout.jsp">
 		<put-attribute name="title" value="" />
-		<put-attribute name="header"
-			value="/WEB-INF/views/layout/header.jsp" />
-		<put-attribute name="menu"
-			value="/WEB-INF/views/layout/menu.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+		<put-attribute name="menu"	value="/WEB-INF/views/layout/menu.jsp" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="footer"
-			value="/WEB-INF/views/layout/footer.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
 	</definition>
 
 	<!-- Home Page -->
 	<definition name="addUser" extends="base-definition">
-		<put-attribute name="body"
-			value="/WEB-INF/views/user/addUser.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/user/addUser.jsp" />
 	</definition>
 
 	<definition name="editUser" extends="base-definition">
-		<put-attribute name="body"
-			value="/WEB-INF/views/user/editUser.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/user/editUser.jsp" />
 	</definition>
 
 	<definition name="listUser" extends="base-definition">
-		<put-attribute name="body"
-			value="/WEB-INF/views/user/listUser.jsp" />
+		<put-attribute name="body"  value="/WEB-INF/views/user/listUser.jsp" />
 	</definition>
 
-	<definition name="viewUser" extends="base-definition">
-		<put-attribute name="body"
-			value="/WEB-INF/views/user/viewUser.jsp" />
+	<definition name="viewUser" extends="base-definition"><!--Quang trong la ten tren nay, con ten file jsp ko quan trong   -->
+		<put-attribute name="body" value="/WEB-INF/views/user/viewUser.jsp" />
 	</definition>
 
 	<!--Product -->
 	<definition name="addProduct" extends="base-definition">
-		<put-attribute name="body"
-			value="/WEB-INF/views/product/addProduct.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/product/addProduct.jsp" />
 	</definition>
 
 	<definition name="editProduct" extends="base-definition">
-		<put-attribute name="body"
-			value="/WEB-INF/views/product/editProduct.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/product/editProduct.jsp" />
 	</definition>
 
 	<definition name="listProduct" extends="base-definition">
-		<put-attribute name="body"
-			value="/WEB-INF/views/product/listProduct.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/product/listProduct.jsp" />
 	</definition>
 
 	<definition name="viewProduct" extends="base-definition">
@@ -64,10 +52,21 @@
 			value="/WEB-INF/views/cart/cart.jsp" />
 	</definition>
 
-<!-- login  -->
-<definition name="cart" extends="base-definition">
+	<!-- login -->
+	<definition name="login" extends="base-definition">
 		<put-attribute name="body"
 			value="/WEB-INF/views/user/login.jsp" />
+	</definition>
+	<!-- error -->
+	<definition name="error" extends="base-definition">
+		<put-attribute name="body"
+			value="/WEB-INF/views/error.jsp" />
+	</definition>
+	
+	<!-- error -->
+	<definition name="404" extends="base-definition">
+		<put-attribute name="body"
+			value="/WEB-INF/views/404.jsp" />
 	</definition>
 
 

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Error Pages</title>
 </head>
 <body>
 	<p>This has error, please try again!</p>

@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>404</title>
 </head>
 <body>
-	<p>This request don't exits</p>
+	<p>404, This request don't exits</p>
 </body>
 </html>
