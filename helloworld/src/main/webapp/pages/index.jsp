@@ -5,11 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href='<c:url value='/css/style.css'/>'>
+<link rel="stylesheet" type="text/css"
+	href='<c:url value='/css/style.css'/>'>
 <title>Insert title here</title>
 </head>
 <body>
-${msg}
-<img src="<c:url value='/image/aaa.jpeg'/>">
+	${msg}
+	<img src="<c:url value='/image/aaa.jpeg'/>">
 </body>
 </html>

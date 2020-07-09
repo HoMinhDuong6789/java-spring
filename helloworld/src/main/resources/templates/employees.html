@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Employee</title>
+<!--resource config  -->
+<!--<link rel="stylesheet" type="text/css" th:href="@{/public/css/style.css}"/>  -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<!--Thymples th: dung # de doc noi dung file properties, @ der doc duong link   -->
+	<h1 th:text="#{employee.list}"></h1>
+	<p>=====================================================================</p>
+	<table>
+		<tr>
+			<th th:text="#{employee.id}"></th>
+			<th th:text="#{employee.name}"></th>
+			<th th:text="#{employee.age}"></th>
+			<th th:text="#{employee.type}"></th>
+		</tr>
+
+		<tr>
+		<tr th:each="emp: ${employees}">
+			<td th:text="${emp.id}"></td>
+			<td th:text="${emp.name}"></td>
+			<td th:text="${emp.age}"></td>
+			<td th:if="${emp.age &gt;= 50}" th:text="#{employee.old}"></td>
+			<td th:if="${emp.age &lt; 50 and emp.age &gt;= 30}"
+				th:text="#{employee.medium}"></td>
+			<td th:if="${emp.age &lt; 30 and emp.age &gt;= 18}"
+				th:text="#{employee.young}"></td>
+			<td th:if="${emp.age &lt;= 12}"
+				th:text="#{employee.kid}"></td>
+		</tr>
+	</table>
+	<p>=====================================================================</p>
+	<form th:action="@{/employee}" method="post">
+		<input name="name" type="text"/>
+		<input name="age" type="text"/>
+		<input type="submit" value="add New"/>
+	</form>
+
+</body>
+</html>
