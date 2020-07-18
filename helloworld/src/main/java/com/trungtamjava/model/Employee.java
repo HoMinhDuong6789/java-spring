@@ -4,6 +4,10 @@ public class Employee {
 	private String id;
 	private String name;
 	private int age;
+	
+	public Employee() {
+		
+	}
 
 	public Employee(String id, String name, int age) {
 		super();
