@@ -1,26 +1,32 @@
 package com.trungtamjava.model;
 
 public class Employee {
-	private String id;
+	private int id;
 	private String name;
 	private int age;
-	
+
 	public Employee() {
-		
+
 	}
 
-	public Employee(String id, String name, int age) {
+	public Employee(int id, String name, int age) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.age = age;
 	}
 
-	public String getId() {
+	public Employee(String name, int age) {
+		super();
+		this.name = name;
+		this.age = age;
+	}
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
