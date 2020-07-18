@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,15 +36,16 @@ public class MainController {
 	}
 
 	@GetMapping(value = "/employees")
-	public String employee(HttpServletRequest request) {
+	public String employee(HttpServletRequest request, Model model) {
 		request.setAttribute("employees", employees);
+		model.addAttribute("employee", new Employee("10", "Model", 23));
 		return "employees";
 	}
 
 	@PostMapping(value = "/employee")
-	public String addemployee(HttpServletRequest request, @RequestParam(name = "name") String name,
-			@RequestParam(name = "age", required = true) int age) {
-		employees.add(new Employee("" + (employees.size() + 1), name, age));
+	public String addemployee(HttpServletRequest request, @ModelAttribute(name="employee") Employee employee) {
+		employee.setId(""+employees.size() + 1);
+		employees.add(employee);
 		return "redirect:/employees";
 	}
 }

@@ -34,9 +34,9 @@
 		</tr>
 	</table>
 	<p>=====================================================================</p>
-	<form th:action="@{/employee}" method="post">
-		<input name="name" type="text"/>
-		<input name="age" type="text"/>
+	<form th:action="@{/employee}" th:object="${employee}" method="post">
+		<input th:field="*{name}" type="text"/>
+		<input th:field ="*{age}" type="text"/>
 		<input type="submit" value="add New"/>
 	</form>
 
