@@ -1,12 +1,13 @@
 package com.trungtamjava.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,9 @@ public class MainController {
 
 	@GetMapping(value = "/employees")
 	public String getAllEmployees(HttpServletRequest request, Model model) {
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		request.setAttribute("msg", environment.getProperty("message") + userDetails.getUsername());
+
 		List<EmployeeDTO> employees = employeeService.getAllEmployees();
 		request.setAttribute("employees", employees);
 		model.addAttribute("employee", new EmployeeDTO(10, "Model", 23));
