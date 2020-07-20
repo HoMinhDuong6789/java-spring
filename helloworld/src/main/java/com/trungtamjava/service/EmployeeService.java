@@ -2,9 +2,17 @@ package com.trungtamjava.service;
 
 import java.util.List;
 
-import com.trungtamjava.model.Employee;
+import com.trungtamjava.model.EmployeeDTO;
 
 public interface EmployeeService {
-	public List<Employee> getAllEmployees();
-	public void addEmployee(Employee employee);
+	/*
+	 * convert dữ liệu từ DTO về Entity
+	 * DTO: đối tượng sử dụng trên tầng View và controller
+	 */
+
+	
+	public List<EmployeeDTO> getAllEmployees();
+	public void addEmployee(EmployeeDTO employee);
+	public void deleleEmployee(int id);
+	public void updateEmployee(EmployeeDTO employee);
 }

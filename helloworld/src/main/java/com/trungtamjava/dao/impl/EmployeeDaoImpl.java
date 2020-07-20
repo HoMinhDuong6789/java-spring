@@ -1,46 +1,48 @@
 package com.trungtamjava.dao.impl;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.trungtamjava.dao.EmployeeDao;
-import com.trungtamjava.model.Employee;
+import com.trungtamjava.entity.Employee;
 
 @Transactional
 @Repository
 public class EmployeeDaoImpl implements EmployeeDao {
 
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
+	@PersistenceContext
+	EntityManager entityManager;
 
 	@Override
-	public List<Employee> getAllEmployees() {
-		String sql = "SELECT * FROM employee";
-		return jdbcTemplate.query(sql, new RowMapper<Employee>() {
-			@Override
-			public Employee mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Employee employee = new Employee();
-				employee.setId(rs.getInt("id"));
-				employee.setName(rs.getString("name"));
-				employee.setAge(rs.getInt("age"));
-				return employee;
-			}
-		});
+	public List<com.trungtamjava.entity.Employee> getAllEmployees() {
+		String jql = "SELECT e FROM Employee e";
+		return entityManager.createQuery(jql, Employee.class).getResultList();
 	}
 
 	@Override
 	public void addEmployee(Employee employee) {
-		// TODO Auto-generated method stub
-		String sql = "INSERT INTO employee (name,age) VALUES ('"+employee.getName()+"',"+employee.getAge()+")";
-				//"INSERT INTO employee (name,age) VALUES (?, ?)"; ???
-		jdbcTemplate.execute(sql);
+		entityManager.persist(employee);
+
+	}
+
+	@Override
+	public void deleteEmployee(Employee employee) {
+		entityManager.remove(employee);
+	}
+
+	@Override
+	public void updateEmployee(Employee employee) {
+		entityManager.merge(employee);
+	}
+
+	@Override
+	public Employee getEmployeeById(int id) {
+		return entityManager.find(Employee.class, id);
 	}
 
 }
