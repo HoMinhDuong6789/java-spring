@@ -9,7 +9,7 @@
 </head>
 <body>
 	<!--Thymples th: dung # de doc noi dung file properties, @ der doc duong link   -->
-		<div th:replace="common/header :: header"></div>
+	<div th:replace="common/header :: header"></div>
 	<h1 th:text="#{employee.list}"></h1>
 	<p>=====================================================================</p>
 	<table>
@@ -18,6 +18,7 @@
 			<th th:text="#{employee.name}"></th>
 			<th th:text="#{employee.age}"></th>
 			<th th:text="#{employee.type}"></th>
+			<th th:text="#{employee.phone}"></th>
 		</tr>
 
 		<tr>
@@ -31,13 +32,14 @@
 			<td th:if="${emp.age &lt; 30 and emp.age &gt;= 18}"
 				th:text="#{employee.young}"></td>
 			<td th:if="${emp.age &lt;= 12}" th:text="#{employee.kid}"></td>
+			<td><p th:each="phone: ${emp.phones}" th:text="${phone}"></p></td>
+
 		</tr>
 	</table>
 	<p>=====================================================================</p>
 	<form th:action="@{/employee}" th:object="${employee}" method="post">
-		<input th:field="*{name}" type="text" /> 
-		<input th:field="*{age}"type="text" /> 
-		<input type="submit" value="add New" />
+		<input th:field="*{name}" type="text" /> <input th:field="*{age}"
+			type="text" /> <input type="submit" value="add New" />
 	</form>
 	<p>=====================================================================</p>
 	<div th:replace="common/footer :: footer"></div>

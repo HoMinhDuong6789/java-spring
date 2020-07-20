@@ -1,12 +1,16 @@
 package com.trungtamjava.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +30,10 @@ public class Employee implements Serializable {
 
 	@Column(name = "age")
 	private int age;
+	
+	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true) //mappedBy: theo thuộc tính, trong class, fetch = FetchType.LAZY: để khi nào dùng thì mới load
+	// cascade = CascadeType.ALL : cascade thể  hiện khi xóa Employee thì các phone number của employee đó cũng xóa luôn
+	private List<Phone> phones;
 
 	public Employee() {
 
@@ -67,5 +75,15 @@ public class Employee implements Serializable {
 	public void setAge(int age) {
 		this.age = age;
 	}
+
+	public List<Phone> getPhones() {
+		return phones;
+	}
+
+	public void setPhones(List<Phone> phones) {
+		this.phones = phones;
+	}
+	
+	
 
 }

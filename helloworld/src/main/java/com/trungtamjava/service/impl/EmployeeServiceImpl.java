@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.trungtamjava.dao.EmployeeDao;
+import com.trungtamjava.entity.Phone;
 import com.trungtamjava.model.EmployeeDTO;
 import com.trungtamjava.service.EmployeeService;
 
@@ -25,6 +26,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 			employeeDTO.setId(employee.getId());
 			employeeDTO.setName(employee.getName());
 			employeeDTO.setAge(employee.getAge());
+			
+			//get phone number
+			List<String> phoneList = new ArrayList<String>();
+			for(Phone phone : employee.getPhones()) {
+				phoneList.add(phone.getPhonenumber());
+			}
+			
+			employeeDTO.setPhones(phoneList);
+			
 			listEmployeeDTO.add(employeeDTO);
 		}
 		return listEmployeeDTO;
@@ -36,6 +46,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employee.setId(employeeDTO.getId());
 		employee.setName(employeeDTO.getName());
 		employee.setAge(employeeDTO.getAge());
+		List<Phone> phones = new ArrayList<Phone>();
+		for(String s : employeeDTO.getPhones()) {
+			Phone phone = new Phone();
+			phone.setPhonenumber(s);
+			phone.setEmployee(employee);
+			phones.add(phone);
+		}
+		employee.setPhones(phones);
 		employeeDao.addEmployee(employee);
 	}
 
@@ -54,6 +72,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 		if(employee!=null) {
 			employee.setName(employeeDTO.getName());
 			employee.setAge(employeeDTO.getAge());
+			
+			employee.getPhones().clear();
+			List<Phone> phones = new ArrayList<Phone>();
+			for(String s : employeeDTO.getPhones()) {
+				Phone phone = new Phone();
+				phone.setPhonenumber(s);
+				phone.setEmployee(employee);
+				phones.add(phone);
+			}
+			
+			employee.getPhones().addAll(phones);
 			employeeDao.updateEmployee(employee);
 		}
 	}

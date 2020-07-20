@@ -1,5 +1,7 @@
 package com.trungtamjava.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +41,7 @@ public class MainController {
 
 	@PostMapping(value = "/employee")
 	public String addEmployee(HttpServletRequest request, @ModelAttribute(name = "employee") EmployeeDTO employee) {
+		employee.setPhones(Arrays.asList("098766555", "098883223"));
 		employeeService.addEmployee(employee);
 		return "redirect:/employees";
 	}
