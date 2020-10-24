@@ -8,9 +8,6 @@ public class App
 {
     public static void main( String[] args )
     {
-       var store = new Store<Integer, Integer>(121, 21);
-       int a = store.getVal1();
-       
-        
+       var store = new Store<Integer>(121);
     }
 }
