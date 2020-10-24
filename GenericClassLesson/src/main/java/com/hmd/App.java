@@ -8,8 +8,15 @@ public class App
 {
     public static void main( String[] args )
     {
-       //var store = new Store<Ferrari>(new Ferrari());
-    	var store = new Store<Lambo>(new Lambo());
+       var countries = new String[] {"Vietnam", "Thailand", "Compudia"};
+       var names = new String[] {"John", "James", "Daniel"};
+       var scores = new Integer[] {22, 46, 66,54};
+       
+       var store1 = new Store<>(countries);
+       var store2 = new Store<>(names);
+       var store3 = new Store<>(scores);
+       
+       store1.greaterThan(store2);
        
     }
 }
