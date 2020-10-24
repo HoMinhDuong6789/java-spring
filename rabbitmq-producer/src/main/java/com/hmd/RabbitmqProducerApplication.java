@@ -11,13 +11,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.hmd.entity.Picture;
 import com.hmd.producer.MyPictureProducer;
 import com.hmd.producer.PictureProducerTwo;
+import com.hmd.producer.RetryPictureProducer;
 
 @SpringBootApplication
 //@EnableScheduling
 public class RabbitmqProducerApplication implements CommandLineRunner {
 
 	@Autowired
-	private MyPictureProducer pictureProducer;
+	private RetryPictureProducer pictureProducer;
 
 	private final List<String> SOURCES = List.of("mobile", "web");
 	private final List<String> TYPES = List.of("jpg", "png", "svg");
