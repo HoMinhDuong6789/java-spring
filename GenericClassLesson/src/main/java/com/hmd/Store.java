@@ -1,6 +1,7 @@
 package com.hmd;
 
-public class Store<U extends Number> {
+public class Store<U extends Car> {
+	//public class Store<U extends Number & Car> {
 	U val1;
 
 	public Store(U val1) {
