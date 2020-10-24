@@ -8,6 +8,9 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        var store  = new Store<Integer>(4);
+        
+        int x = store.getValue();
+        
     }
 }

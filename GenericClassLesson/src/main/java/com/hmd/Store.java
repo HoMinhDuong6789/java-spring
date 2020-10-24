@@ -1,13 +1,13 @@
 package com.hmd;
 
-public class Store {
-	Object value;
+public class Store<T> {
+	T value;
 
-	public Store(Object value) {
+	public Store(T value) {
 		this.value = value;
 	}
 
-	public Object getValue() {
+	public T getValue() {
 		return value;
 	}
 
