@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hmd.entity.Picture;
 
-//@Service
+@Service
 public class PictureLogConsumer {
 	
 	private ObjectMapper objectMapper = new ObjectMapper();
