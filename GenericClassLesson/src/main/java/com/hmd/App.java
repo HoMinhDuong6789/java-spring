@@ -6,7 +6,7 @@ package com.hmd;
  */
 public class App {
 	public static void main(String[] args) {
-		var store = new Store();
+		var store = new Store(38);
 
 		store.<Integer>print(90);
 
