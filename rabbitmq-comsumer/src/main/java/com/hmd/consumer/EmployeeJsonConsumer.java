@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hmd.entity.Employee;
 
-@Service
+//@Service
 public class EmployeeJsonConsumer {
 	private ObjectMapper objectMapper = new ObjectMapper();
 	private static final Logger log = LoggerFactory.getLogger(EmployeeJsonConsumer.class);

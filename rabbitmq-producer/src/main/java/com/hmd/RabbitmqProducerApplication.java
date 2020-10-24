@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.hmd.entity.Picture;
+import com.hmd.producer.MyPictureProducer;
 import com.hmd.producer.PictureProducerTwo;
 
 @SpringBootApplication
@@ -16,7 +17,7 @@ import com.hmd.producer.PictureProducerTwo;
 public class RabbitmqProducerApplication implements CommandLineRunner {
 
 	@Autowired
-	private PictureProducerTwo pictureProducer;
+	private MyPictureProducer pictureProducer;
 
 	private final List<String> SOURCES = List.of("mobile", "web");
 	private final List<String> TYPES = List.of("jpg", "png", "svg");
@@ -32,7 +33,7 @@ public class RabbitmqProducerApplication implements CommandLineRunner {
 		for (int i = 0; i < 10; i++) {
 			var picture = new Picture();
 			picture.setName("Picture: " + i);
-			picture.setSize(ThreadLocalRandom.current().nextLong(1, 10001));
+			picture.setSize(ThreadLocalRandom.current().nextLong(9994, 10001));
 			picture.setSource(SOURCES.get(i % SOURCES.size()));
 			picture.setType(TYPES.get(i % TYPES.size()));
 

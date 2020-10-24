@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@Service
+//@Service
 public class PictureConsumer {
 	
 	private ObjectMapper objectMapper = new ObjectMapper();
